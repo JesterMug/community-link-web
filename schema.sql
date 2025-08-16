@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Aug 15, 2025 at 11:36 AM
+-- Generation Time: Aug 16, 2025 at 10:29 AM
 -- Server version: 9.4.0
 -- PHP Version: 8.4.11
 
@@ -24,14 +24,30 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Table structure for table `Events`
+-- Table structure for table `contact_messages`
 --
 
-CREATE TABLE `Events` (
+CREATE TABLE `contact_messages` (
+  `contact_messages_id` int NOT NULL,
+  `full_name` varchar(128) NOT NULL,
+  `email` varchar(256) NOT NULL,
+  `phone` varchar(20) NOT NULL,
+  `message` text NOT NULL,
+  `replied` tinyint(1) NOT NULL DEFAULT '0',
+  `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `event`
+--
+
+CREATE TABLE `event` (
   `event_id` int NOT NULL,
   `title` varchar(256) NOT NULL,
-  `location` varchar(256) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
-  `description` text CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
+  `location` varchar(256) NOT NULL,
+  `description` text NOT NULL,
   `date` date NOT NULL,
   `organisation_id` int NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
@@ -39,52 +55,52 @@ CREATE TABLE `Events` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `Organisations`
+-- Table structure for table `organisation`
 --
 
-CREATE TABLE `Organisations` (
+CREATE TABLE `organisation` (
   `organisation_id` int NOT NULL,
-  `org_name` varchar(256) NOT NULL,
-  `contact_person_full_name` varchar(256) NOT NULL,
-  `email` varchar(128) NOT NULL,
-  `phone` varchar(32) NOT NULL
+  `organisation_name` varchar(256) NOT NULL,
+  `contact_person_full_name` varchar(128) NOT NULL,
+  `email` varchar(256) NOT NULL,
+  `phone` varchar(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `Users`
+-- Table structure for table `user`
 --
 
-CREATE TABLE `Users` (
+CREATE TABLE `user` (
   `user_id` int NOT NULL,
-  `username` varchar(64) NOT NULL,
+  `username` varchar(128) NOT NULL,
   `password` varchar(256) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `Volunteers`
+-- Table structure for table `volunteer`
 --
 
-CREATE TABLE `Volunteers` (
+CREATE TABLE `volunteer` (
   `volunteer_id` int NOT NULL,
-  `full_name` varchar(256) NOT NULL,
-  `email` varchar(128) NOT NULL,
-  `phone` varchar(30) NOT NULL,
-  `skills` text CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci,
-  `profile_picture` varchar(256) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL,
-  `status` enum('active','inactive') DEFAULT 'inactive'
+  `full_name` varchar(128) NOT NULL,
+  `email` varchar(256) NOT NULL,
+  `phone` varchar(20) NOT NULL,
+  `skills` text,
+  `profile_picture` mediumblob NOT NULL,
+  `status` enum('active/hired','inactive') NOT NULL DEFAULT 'inactive'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `Volunteer_Event`
+-- Table structure for table `volunteer_event`
 --
 
-CREATE TABLE `Volunteer_Event` (
+CREATE TABLE `volunteer_event` (
   `event_id` int NOT NULL,
   `volunteer_id` int NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
@@ -94,37 +110,43 @@ CREATE TABLE `Volunteer_Event` (
 --
 
 --
--- Indexes for table `Events`
+-- Indexes for table `contact_messages`
 --
-ALTER TABLE `Events`
+ALTER TABLE `contact_messages`
+  ADD PRIMARY KEY (`contact_messages_id`);
+
+--
+-- Indexes for table `event`
+--
+ALTER TABLE `event`
   ADD PRIMARY KEY (`event_id`),
   ADD KEY `organisation_id` (`organisation_id`);
 
 --
--- Indexes for table `Organisations`
+-- Indexes for table `organisation`
 --
-ALTER TABLE `Organisations`
+ALTER TABLE `organisation`
   ADD PRIMARY KEY (`organisation_id`),
   ADD UNIQUE KEY `email` (`email`);
 
 --
--- Indexes for table `Users`
+-- Indexes for table `user`
 --
-ALTER TABLE `Users`
+ALTER TABLE `user`
   ADD PRIMARY KEY (`user_id`),
   ADD UNIQUE KEY `username` (`username`);
 
 --
--- Indexes for table `Volunteers`
+-- Indexes for table `volunteer`
 --
-ALTER TABLE `Volunteers`
+ALTER TABLE `volunteer`
   ADD PRIMARY KEY (`volunteer_id`),
   ADD UNIQUE KEY `email` (`email`);
 
 --
--- Indexes for table `Volunteer_Event`
+-- Indexes for table `volunteer_event`
 --
-ALTER TABLE `Volunteer_Event`
+ALTER TABLE `volunteer_event`
   ADD PRIMARY KEY (`event_id`,`volunteer_id`),
   ADD KEY `volunteer_id` (`volunteer_id`);
 
@@ -133,27 +155,33 @@ ALTER TABLE `Volunteer_Event`
 --
 
 --
--- AUTO_INCREMENT for table `Events`
+-- AUTO_INCREMENT for table `contact_messages`
 --
-ALTER TABLE `Events`
+ALTER TABLE `contact_messages`
+  MODIFY `contact_messages_id` int NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `event`
+--
+ALTER TABLE `event`
   MODIFY `event_id` int NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT for table `Organisations`
+-- AUTO_INCREMENT for table `organisation`
 --
-ALTER TABLE `Organisations`
+ALTER TABLE `organisation`
   MODIFY `organisation_id` int NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT for table `Users`
+-- AUTO_INCREMENT for table `user`
 --
-ALTER TABLE `Users`
+ALTER TABLE `user`
   MODIFY `user_id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
--- AUTO_INCREMENT for table `Volunteers`
+-- AUTO_INCREMENT for table `volunteer`
 --
-ALTER TABLE `Volunteers`
+ALTER TABLE `volunteer`
   MODIFY `volunteer_id` int NOT NULL AUTO_INCREMENT;
 
 --
@@ -161,17 +189,17 @@ ALTER TABLE `Volunteers`
 --
 
 --
--- Constraints for table `Events`
+-- Constraints for table `event`
 --
-ALTER TABLE `Events`
-  ADD CONSTRAINT `events_ibfk_1` FOREIGN KEY (`organisation_id`) REFERENCES `Organisations` (`organisation_id`);
+ALTER TABLE `event`
+  ADD CONSTRAINT `event_ibfk_1` FOREIGN KEY (`organisation_id`) REFERENCES `organisation` (`organisation_id`) ON DELETE RESTRICT ON UPDATE RESTRICT;
 
 --
--- Constraints for table `Volunteer_Event`
+-- Constraints for table `volunteer_event`
 --
-ALTER TABLE `Volunteer_Event`
-  ADD CONSTRAINT `volunteer_event_ibfk_1` FOREIGN KEY (`event_id`) REFERENCES `Events` (`event_id`) ON DELETE CASCADE,
-  ADD CONSTRAINT `volunteer_event_ibfk_2` FOREIGN KEY (`volunteer_id`) REFERENCES `Volunteers` (`volunteer_id`) ON DELETE CASCADE;
+ALTER TABLE `volunteer_event`
+  ADD CONSTRAINT `volunteer_event_ibfk_1` FOREIGN KEY (`event_id`) REFERENCES `event` (`event_id`) ON DELETE CASCADE,
+  ADD CONSTRAINT `volunteer_event_ibfk_2` FOREIGN KEY (`volunteer_id`) REFERENCES `volunteer` (`volunteer_id`) ON DELETE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
