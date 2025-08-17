@@ -1,5 +1,5 @@
 <?php
-require_once ("connection.php");
+require_once("db_connection.php");
 /**
  * @var string $db_hostname
  * @var string $db_name
