@@ -1,0 +1,28 @@
+<?php
+
+require_once __DIR__ . '/Model.php';
+
+class VolunteerEvent extends Model
+{
+    public static function assign(int $volunteer_id, int $event_id): bool
+    {
+        $st = self::$pdo->prepare("INSERT INTO Volunteer_Event (event_id, volunteer_id) VALUES (?, ?)");
+        return $st->execute([$event_id, $volunteer_id]);
+    }
+
+    public static function unassign(int $volunteer_id, int $event_id): bool
+    {
+        $st = self::$pdo->prepare("DELETE FROM Volunteer_Event WHERE event_id=? AND volunteer_id=?");
+        return $st->execute([$event_id, $volunteer_id]);
+    }
+
+    public static function volunteersForEvent(int $event_id): array
+    {
+        $sql = "SELECT v.* FROM Volunteers v
+                JOIN Volunteer_Event ve ON v.volunteer_id = ve.volunteer_id
+                WHERE ve.event_id = ?";
+        $st = self::$pdo->prepare($sql);
+        $st->execute([$event_id]);
+        return $st->fetchAll();
+    }
+}
