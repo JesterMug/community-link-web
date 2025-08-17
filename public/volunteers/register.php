@@ -233,6 +233,15 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 </main>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-
+<script>
+    // Initialise all toasts
+    var toasts = document.querySelectorAll('.toast');
+    toasts.forEach(function(toast) {
+        new bootstrap.Toast(toast, {
+            autohide: true,
+            delay: 5000
+        });
+    });
+</script>
 </body>
 </html>

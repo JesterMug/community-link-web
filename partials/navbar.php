@@ -19,6 +19,11 @@
                 <li class="nav-item">
                     <a class="nav-link" href="/Lab03_Group05/public/volunteers/register.php">Volunteer Registration</a>
                 </li>
+
+                <!-- Organisation Registration -->
+                <li class="nav-item">
+                    <a class="nav-link" href="/Lab03_Group05/public/organisations/register.php">Organisation Registration</a>
+                </li>
             </ul>
         </div>
     </div>
