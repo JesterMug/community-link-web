@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.2.2
+-- version 5.2.1
 -- https://www.phpmyadmin.net/
 --
--- Host: localhost
--- Generation Time: Aug 16, 2025 at 10:29 AM
--- Server version: 9.4.0
--- PHP Version: 8.4.11
+-- Host: 127.0.0.1
+-- Generation Time: Aug 17, 2025 at 10:27 AM
+-- Server version: 10.4.32-MariaDB
+-- PHP Version: 8.2.12
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -28,13 +28,13 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE `contact_messages` (
-  `contact_messages_id` int NOT NULL,
+  `contact_messages_id` int(11) NOT NULL,
   `full_name` varchar(128) NOT NULL,
   `email` varchar(256) NOT NULL,
   `phone` varchar(20) NOT NULL,
   `message` text NOT NULL,
-  `replied` tinyint(1) NOT NULL DEFAULT '0',
-  `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
+  `replied` tinyint(1) NOT NULL DEFAULT 0,
+  `created_at` timestamp NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
@@ -44,12 +44,12 @@ CREATE TABLE `contact_messages` (
 --
 
 CREATE TABLE `event` (
-  `event_id` int NOT NULL,
+  `event_id` int(11) NOT NULL,
   `title` varchar(256) NOT NULL,
   `location` varchar(256) NOT NULL,
   `description` text NOT NULL,
   `date` date NOT NULL,
-  `organisation_id` int NOT NULL
+  `organisation_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
@@ -59,7 +59,7 @@ CREATE TABLE `event` (
 --
 
 CREATE TABLE `organisation` (
-  `organisation_id` int NOT NULL,
+  `organisation_id` int(11) NOT NULL,
   `organisation_name` varchar(256) NOT NULL,
   `contact_person_full_name` varchar(128) NOT NULL,
   `email` varchar(256) NOT NULL,
@@ -73,7 +73,7 @@ CREATE TABLE `organisation` (
 --
 
 CREATE TABLE `user` (
-  `user_id` int NOT NULL,
+  `user_id` int(11) NOT NULL,
   `username` varchar(128) NOT NULL,
   `password` varchar(256) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
@@ -85,13 +85,13 @@ CREATE TABLE `user` (
 --
 
 CREATE TABLE `volunteer` (
-  `volunteer_id` int NOT NULL,
+  `volunteer_id` int(11) NOT NULL,
   `full_name` varchar(128) NOT NULL,
   `email` varchar(256) NOT NULL,
   `phone` varchar(20) NOT NULL,
-  `skills` text,
+  `skills` text DEFAULT NULL,
   `profile_picture` mediumblob NOT NULL,
-  `status` enum('active/hired','inactive') NOT NULL DEFAULT 'inactive'
+  `status` enum('active','inactive') NOT NULL DEFAULT 'inactive'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
@@ -101,8 +101,8 @@ CREATE TABLE `volunteer` (
 --
 
 CREATE TABLE `volunteer_event` (
-  `event_id` int NOT NULL,
-  `volunteer_id` int NOT NULL
+  `event_id` int(11) NOT NULL,
+  `volunteer_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
@@ -158,31 +158,31 @@ ALTER TABLE `volunteer_event`
 -- AUTO_INCREMENT for table `contact_messages`
 --
 ALTER TABLE `contact_messages`
-  MODIFY `contact_messages_id` int NOT NULL AUTO_INCREMENT;
+  MODIFY `contact_messages_id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `event`
 --
 ALTER TABLE `event`
-  MODIFY `event_id` int NOT NULL AUTO_INCREMENT;
+  MODIFY `event_id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `organisation`
 --
 ALTER TABLE `organisation`
-  MODIFY `organisation_id` int NOT NULL AUTO_INCREMENT;
+  MODIFY `organisation_id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `user_id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `volunteer`
 --
 ALTER TABLE `volunteer`
-  MODIFY `volunteer_id` int NOT NULL AUTO_INCREMENT;
+  MODIFY `volunteer_id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- Constraints for dumped tables
@@ -192,7 +192,7 @@ ALTER TABLE `volunteer`
 -- Constraints for table `event`
 --
 ALTER TABLE `event`
-  ADD CONSTRAINT `event_ibfk_1` FOREIGN KEY (`organisation_id`) REFERENCES `organisation` (`organisation_id`) ON DELETE RESTRICT ON UPDATE RESTRICT;
+  ADD CONSTRAINT `event_ibfk_1` FOREIGN KEY (`organisation_id`) REFERENCES `organisation` (`organisation_id`);
 
 --
 -- Constraints for table `volunteer_event`
