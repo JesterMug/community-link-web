@@ -15,6 +15,11 @@
                     <a class="nav-link" href="/Lab03_Group05/">Home</a>
                 </li>
 
+                <!-- User Registration -->
+                <li class="nav-item">
+                  <a class="nav-link" href="/Lab03_Group05/public/users/view.php">User Registration</a>
+                </li>
+
                 <!-- Volunteer Registration -->
                 <li class="nav-item">
                     <a class="nav-link" href="/Lab03_Group05/public/volunteers/register.php">Volunteer Registration</a>
