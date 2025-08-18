@@ -17,9 +17,21 @@ class User extends Model
     public static function create(string $username, string $plainPassword): int
     {
         $hash = password_hash($plainPassword, PASSWORD_DEFAULT);
-        $st = self::$pdo->prepare("INSERT INTO Users (username, password) VALUES (?, ?)");
+        $st = self::$pdo->prepare("INSERT INTO user (username, password) VALUES (?, ?)");
         $st->execute([$username, $hash]);
         return (int)self::$pdo->lastInsertId();
+    }
+
+    public static function delete(int $id): bool
+    {
+      $st = self::$pdo->prepare("DELETE FROM user WHERE user_id=?");
+      return $st->execute([$id]);
+    }
+
+    public static function all(): array
+    {
+      $st = self::$pdo->query("SELECT user_id, username FROM user ORDER BY user_id ASC");
+      return $st->fetchAll(PDO::FETCH_ASSOC);
     }
 
     public static function authenticate(string $username, string $plainPassword): ?User
