@@ -73,6 +73,9 @@ $volunteers = Volunteer::all();
                             <td><?= htmlspecialchars($v['phone']) ?></td>
                             <td><?= htmlspecialchars($v['status']) ?></td>
                             <td>
+                                <a href="edit.php?id=<?= $v['volunteer_id'] ?>" class="btn btn-sm btn-secondary">
+                                    Edit
+                                </a>
                                 <a href="?delete=<?= $v['volunteer_id'] ?>"
                                    class="btn btn-sm btn-danger"
                                    onclick="return confirm('Delete this volunteer?')">

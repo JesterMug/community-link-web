@@ -25,7 +25,20 @@ class Volunteer extends Model
 
     public function __construct(array $data = [])
     {
-        foreach ($data as $k => $v) if (property_exists($this, $k)) $this->$k = $v;
+        foreach ($data as $k => $v) {
+            if (property_exists($this, $k)) {
+                // Handle status conversion from string to enum
+                if ($k === 'status' && is_string($v)) {
+                    $this->status = match ($v) {
+                        'active' => VolunteerStatus::Active,
+                        'inactive' => VolunteerStatus::Inactive,
+                        default => VolunteerStatus::Inactive
+                    };
+                } else {
+                    $this->$k = $v;
+                }
+            }
+        }
     }
 
     public function save()
