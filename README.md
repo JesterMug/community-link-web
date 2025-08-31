@@ -54,21 +54,21 @@ Data: data.sql
 - [x] Registration Form with profile picture
 - [x] List of Volunteers
 - [x] Volunteer profile and status modification
-- [ ] Admin can delete volunteers with their profile picture.
-- [ ] All inputs validated at front-end
-- [ ] All errors properly captured and handled
-- [ ] Any relationships with other tables are properly handled
+- [x] Admin can delete volunteers with their profile picture.
+- [x] All inputs validated at front-end
+- [x] All errors properly captured and handled
+- [x] Any relationships with other tables are properly handled
 - [x] Using prepared statements throughout
 #### Partner Organisation Pages
 - [x] Registration Form
-- [ ] List of Partners (When no record is found in the database, an appropriate message is displayed)
-- [ ] Partner Organisation inspection/view page
-- [ ] Partner organisation modification
-- [ ] Admin can delete an organisation
-- [ ] All inputs validated at front-end
-- [ ] Any relationships with other tables are properly handled
-- [ ] Errors are properly captured and handled
-- [ ] Using prepared statements throughout
+- [x] List of Partners (When no record is found in the database, an appropriate message is displayed)
+- [x] Partner Organisation inspection/view page
+- [x] Partner organisation modification
+- [x] Admin can delete an organisation
+- [x] All inputs validated at front-end
+- [x] Any relationships with other tables are properly handled
+- [x] Errors are properly captured and handled
+- [x] Using prepared statements throughout
 #### Security/Authentication
 - [ ] The user cannot access anything without logging in (login page, menu, and homepage, if any, excluded)
 - [ ] Valid credentials are required for accessing the system
