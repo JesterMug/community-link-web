@@ -1,25 +1,39 @@
 <?php
-
-
 require_once __DIR__ . '/Model.php';
+
+enum UserRole: string
+{
+    case ADMIN = 'admin';
+    case VOLUNTEER = 'volunteer';
+}
 
 class User extends Model
 {
     public ?int $user_id = null;
     public string $username;
-    public string $password; // hashed
+    public string $password;
+    public UserRole $role = UserRole::ADMIN;
+    public ?int $volunteer_id = null;
+    
 
     public function __construct(array $d = [])
     {
-
-        foreach ($d as $k => $v) if (property_exists($this, $k)) $this->$k = $v;
+        foreach ($d as $k => $v) {
+            if (property_exists($this, $k)) {
+                if ($k === 'role' && is_string($v)) {
+                    $this->$k = UserRole::from($v);
+                } else {
+                    $this->$k = $v;
+                }
+            }
+        }
     }
 
-    public static function create(string $username, string $plainPassword): int
+    public static function create(string $username, string $plainPassword, UserRole $role = UserRole::ADMIN, ?int $volunteer_id = null): int
     {
         $hash = password_hash($plainPassword, PASSWORD_DEFAULT);
-        $st = self::getPDO()->prepare("INSERT INTO user (username, password) VALUES (?, ?)");
-        $st->execute([$username, $hash]);
+        $st = self::getPDO()->prepare("INSERT INTO user (username, password, role, volunteer_id) VALUES (?, ?, ?, ?)");
+        $st->execute([$username, $hash, $role->value, $volunteer_id]);
         return (int)self::getPDO()->lastInsertId();
     }
 
@@ -31,7 +45,7 @@ class User extends Model
 
     public static function all(): array
     {
-      $st = self::getPDO()->query("SELECT user_id, username FROM user ORDER BY user_id ASC");
+      $st = self::getPDO()->query("SELECT u.user_id, u.username, u.role, u.volunteer_id, v.full_name as volunteer_name FROM user u LEFT JOIN volunteer v ON u.volunteer_id = v.volunteer_id ORDER BY u.user_id ASC");
       return $st->fetchAll(PDO::FETCH_ASSOC);
     }
 

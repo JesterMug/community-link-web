@@ -1,6 +1,10 @@
 <?php
 require_once __DIR__ . '/../../classes/Model.php';
 require_once __DIR__ . '/../../classes/Organisation.php';
+require_once __DIR__ . '/../../classes/Auth.php';
+
+Auth::requireAdmin();
+
 
 $all = Organisation::all();
 

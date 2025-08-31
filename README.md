@@ -70,5 +70,5 @@ Data: data.sql
 - [x] Errors are properly captured and handled
 - [x] Using prepared statements throughout
 #### Security/Authentication
-- [ ] The user cannot access anything without logging in (login page, menu, and homepage, if any, excluded)
-- [ ] Valid credentials are required for accessing the system
+- [x] The user cannot access anything without logging in (login page, menu, and homepage, if any, excluded)
+- [x] Valid credentials are required for accessing the system
