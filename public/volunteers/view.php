@@ -7,7 +7,8 @@ $success = null;
 // Delete volunteer
 if (isset($_GET['delete'])) {
     $deleteId = (int) $_GET['delete'];
-    if (Volunteer::delete($deleteId)) {
+    $volunteer = Volunteer::find($deleteId);
+    if ($volunteer && $volunteer->delete()) {
         $success = "Volunteer deleted successfully.";
     } else {
         $errors[] = "Error deleting volunteer.";

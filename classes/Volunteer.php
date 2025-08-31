@@ -84,7 +84,6 @@ class Volunteer extends Model
 
     public function delete()
     {
-        if ($this->volunteer_id === null) return false;
         $st = self::getPDO()->prepare("DELETE FROM Volunteer WHERE volunteer_id=?");
         return $st->execute([$this->volunteer_id]);
     }

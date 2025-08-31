@@ -52,13 +52,13 @@ Data: data.sql
 - [x] Creation of OOP classes
 #### Volunteer Pages
 - [x] Registration Form with profile picture
-- [ ] List of Volunteers
-- [ ] Volunteer profile and status modification
+- [x] List of Volunteers
+- [x] Volunteer profile and status modification
 - [ ] Admin can delete volunteers with their profile picture.
 - [ ] All inputs validated at front-end
 - [ ] All errors properly captured and handled
 - [ ] Any relationships with other tables are properly handled
-- [ ] Using prepared statements throughout
+- [x] Using prepared statements throughout
 #### Partner Organisation Pages
 - [x] Registration Form
 - [ ] List of Partners (When no record is found in the database, an appropriate message is displayed)
