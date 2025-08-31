@@ -71,11 +71,17 @@ $users = User::all();
               <td><?= htmlspecialchars($u['user_id']) ?></td>
               <td><?= htmlspecialchars($u['username']) ?></td>
               <td>
+                <a href="edit.php?id=<?= $u['user_id'] ?>"
+                   class="btn btn-sm btn-secondary">
+                  Edit
+                </a>
+                <?php if ($u['role'] != 'admin'): ?>
                 <a href="?delete=<?= $u['user_id'] ?>"
                    class="btn btn-sm btn-danger"
                    onclick="return confirm('Delete this user?')">
                   Delete
                 </a>
+                <?php endif; ?>
               </td>
             </tr>
           <?php endforeach; ?>

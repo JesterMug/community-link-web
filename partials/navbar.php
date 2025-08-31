@@ -29,13 +29,13 @@ if (isset($_GET['logout'])) {
                     <?php if (Auth::isAdmin()): ?>
                         <!-- Admin-only links -->
                         <li class="nav-item">
-                            <a class="nav-link" href="/Lab03_Group05/public/users/view.php">User Management</a>
+                            <a class="nav-link" href="/Lab03_Group05/public/users/view.php">Users</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="/Lab03_Group05/public/volunteers/view.php">Volunteer Management</a>
+                            <a class="nav-link" href="/Lab03_Group05/public/volunteers/view.php">Volunteers</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="/Lab03_Group05/public/organisations/view.php">Organisation Management</a>
+                            <a class="nav-link" href="/Lab03_Group05/public/organisations/view.php">Organisations</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="/Lab03_Group05/public/events/view.php">Events</a>
