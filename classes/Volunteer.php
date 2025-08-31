@@ -49,13 +49,11 @@ class Volunteer extends Model
         return $row ? new Volunteer($row) : null;
     }
 
-    public static function all(int $limit = 50, int $offset = 0)
+    public static function all()
     {
-        $st = self::getPDO()->prepare("SELECT * FROM Volunteer ORDER BY volunteer_id DESC LIMIT ? OFFSET ?");
-        $st->bindValue(1, $limit, PDO::PARAM_INT);
-        $st->bindValue(2, $offset, PDO::PARAM_INT);
-        $st->execute();
-        return array_map(fn($r) => new Volunteer($r), $st->fetchAll());
+        $st = self::getPDO()->query("SELECT * FROM volunteer ORDER BY volunteer_id ASC");
+        return $st->fetchAll(PDO::FETCH_ASSOC);
+
     }
 
     public function update()
