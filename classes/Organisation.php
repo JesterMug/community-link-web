@@ -53,7 +53,9 @@ class Organisation extends Model
 
     public function update(): bool
     {
-        $st = self::getPDO()->prepare("UPDATE Organisation SET organisation    _name=?, contact_person_full_name=?, email=?, phone=? WHERE organisation_id=?");
+        $st = self::getPDO()->prepare("UPDATE organisation
+         SET organisation_name=?, contact_person_full_name=?, email=?, phone=? 
+         WHERE organisation_id=?");
         return $st->execute([$this->organisation_name, $this->contact_person_full_name, $this->email, $this->phone, $this->organisation_id]);
     }
 
