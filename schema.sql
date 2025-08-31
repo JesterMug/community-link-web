@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Aug 17, 2025 at 10:27 AM
+-- Generation Time: Aug 31, 2025 at 01:24 PM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -66,6 +66,13 @@ CREATE TABLE `organisation` (
   `phone` varchar(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+--
+-- Dumping data for table `organisation`
+--
+
+INSERT INTO `organisation` (`organisation_id`, `organisation_name`, `contact_person_full_name`, `email`, `phone`) VALUES
+(8, 'Gloop', 'Hakeem Dimozantos', 'useradfasdf@example.com', '+61466962713');
+
 -- --------------------------------------------------------
 
 --
@@ -75,8 +82,19 @@ CREATE TABLE `organisation` (
 CREATE TABLE `user` (
   `user_id` int(11) NOT NULL,
   `username` varchar(128) NOT NULL,
-  `password` varchar(256) NOT NULL
+  `password` varchar(256) NOT NULL,
+  `role` enum('admin','volunteer') NOT NULL DEFAULT 'admin',
+  `volunteer_id` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `user`
+--
+
+INSERT INTO `user` (`user_id`, `username`, `password`, `role`, `volunteer_id`) VALUES
+(2, 'testing', '$2y$10$O1qFrxR26a2z/4q2a/ORkOGtz05IWBlc6Ej8qnmDGOsEEECgXCebm', 'admin', NULL),
+(5, 'testingggg', '$2y$10$I4LThTMiLAr4tUaLujiy1eDYuJNJdRfVuPnpe7SxPAwUdbn/RCfnm', 'admin', NULL),
+(9, 'Amy', '$2y$10$bM1yAKHjdoqUgdJ2nh24I.yVfWWUbR3w3.tVV9ExliNDsQFCC.R1a', 'admin', NULL);
 
 -- --------------------------------------------------------
 
@@ -90,9 +108,17 @@ CREATE TABLE `volunteer` (
   `email` varchar(256) NOT NULL,
   `phone` varchar(20) NOT NULL,
   `skills` text DEFAULT NULL,
-  `profile_picture` mediumblob NOT NULL,
+  `profile_picture` varchar(255) NOT NULL,
   `status` enum('active','inactive') NOT NULL DEFAULT 'inactive'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `volunteer`
+--
+
+INSERT INTO `volunteer` (`volunteer_id`, `full_name`, `email`, `phone`, `skills`, `profile_picture`, `status`) VALUES
+(21, 'Hakeem Dimozantos', 'bob@example.com', '+61466962713', 'a', '00d4b1b2037c6204.png', 'inactive'),
+(23, 'Hakeem Dimozantos', 'bobdfad@example.com', '+61466962713', 'PastaaaaaaaaaaaaaaaaaaaPastaaaaaaaaaaaaaaaaaaaPastaaaaaaaaaaaaaaaaaaaPastaaaaaaaaaaaaaaaaaaaPastaaaaaaaaaaaaaaaaaaaPastaaaaaaaaaaaaaaaaaaaPastaaaaaaaaaaaaaaaaaaaPastaaaaaaaaaaaaaaaaaaaPastaaaaaaaaaaaaaaaaaaaPastaaaaaaaaaaaaaaaaaaaPastaaaaaaaaaaaaaaaaaaaPastaaaaaaaaaaaaaaaaaaaPastaaaaaaaaaaaaaaaaaaaPastaaaaaaaaaaaaaaaaaaaPastaaaaaaaaaaaaaaaaaaaPastaaaaaaaaaaaaaaaaaaaPastaaaaaaaaaaaaaaaaaaaPastaaaaaaaaaaaaaaaaaaaPastaaaaaaaaaaaaaaaaaaaPastaaaaaaaaaaaaaaaaaaaPastaaaaaaaaaaaaaaaaaaaPastaaaaaaaaaaaaaaaaaaaPastaaaaaaaaaaaaaaaaaaaPastaaaaaaaaaaaaaaaaaaaPastaaaaaaaaaaaaaaaaaaaPastaaaaaaaaaaaaaaaaaaaPastaaaaaaaaaaaaaaaaaaaPastaaaaaaaaaaaaaaaaaaaPastaaaaaaaaaaaaaaaaaaaPastaaaaaaaaaaaaaaaaaaaPastaaaaaaaaaaaaaaaaaaaPastaaaaaaaaaaaaaaaaaaaPastaaaaaaaaaaaaaaaaaaaPastaaaaaaaaaaaaaaaaaaaPastaaaaaaaaaaaaaaaaaaaPastaaaaaaaaaaaaaaaaaaa', 'volunteer_23_1756622933.jpg', 'inactive');
 
 -- --------------------------------------------------------
 
@@ -134,7 +160,8 @@ ALTER TABLE `organisation`
 --
 ALTER TABLE `user`
   ADD PRIMARY KEY (`user_id`),
-  ADD UNIQUE KEY `username` (`username`);
+  ADD UNIQUE KEY `username` (`username`),
+  ADD KEY `volunteer_id` (`volunteer_id`);
 
 --
 -- Indexes for table `volunteer`
@@ -170,19 +197,19 @@ ALTER TABLE `event`
 -- AUTO_INCREMENT for table `organisation`
 --
 ALTER TABLE `organisation`
-  MODIFY `organisation_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `organisation_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT for table `volunteer`
 --
 ALTER TABLE `volunteer`
-  MODIFY `volunteer_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `volunteer_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
 
 --
 -- Constraints for dumped tables
@@ -193,6 +220,12 @@ ALTER TABLE `volunteer`
 --
 ALTER TABLE `event`
   ADD CONSTRAINT `event_ibfk_1` FOREIGN KEY (`organisation_id`) REFERENCES `organisation` (`organisation_id`);
+
+--
+-- Constraints for table `user`
+--
+ALTER TABLE `user`
+  ADD CONSTRAINT `user_ibfk_1` FOREIGN KEY (`volunteer_id`) REFERENCES `volunteer` (`volunteer_id`);
 
 --
 -- Constraints for table `volunteer_event`
