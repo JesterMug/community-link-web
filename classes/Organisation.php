@@ -48,12 +48,14 @@ class Organisation extends Model
     public static function all(): array
     {
         $st = self::getPDO()->query("SELECT * FROM organisation ORDER BY organisation_name ASC");
-        return array_map(fn($r) => new Organisation($r), $st->fetchAll());
+        return $st->fetchAll(PDO::FETCH_ASSOC);
     }
 
     public function update(): bool
     {
-        $st = self::getPDO()->prepare("UPDATE Organisation SET organisation    _name=?, contact_person_full_name=?, email=?, phone=? WHERE organisation_id=?");
+        $st = self::getPDO()->prepare("UPDATE organisation
+         SET organisation_name=?, contact_person_full_name=?, email=?, phone=? 
+         WHERE organisation_id=?");
         return $st->execute([$this->organisation_name, $this->contact_person_full_name, $this->email, $this->phone, $this->organisation_id]);
     }
 

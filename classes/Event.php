@@ -22,7 +22,7 @@ class Event extends Model
             "INSERT INTO Events (title,location,description,date,organisation_id) VALUES (?,?,?,?,?)"
         );
         $st->execute([$this->title, $this->location, $this->description, $this->date, $this->organisation_id]);
-        $this->event_id = (int)self::$pdo->lastInsertId();
+        $this->event_id = (int)self::getPDO()->lastInsertId();
         return $this->event_id;
     }
 

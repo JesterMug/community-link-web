@@ -25,7 +25,20 @@ class Volunteer extends Model
 
     public function __construct(array $data = [])
     {
-        foreach ($data as $k => $v) if (property_exists($this, $k)) $this->$k = $v;
+        foreach ($data as $k => $v) {
+            if (property_exists($this, $k)) {
+                // Handle status conversion from string to enum
+                if ($k === 'status' && is_string($v)) {
+                    $this->status = match ($v) {
+                        'active' => VolunteerStatus::Active,
+                        'inactive' => VolunteerStatus::Inactive,
+                        default => VolunteerStatus::Inactive
+                    };
+                } else {
+                    $this->$k = $v;
+                }
+            }
+        }
     }
 
     public function save()
@@ -49,13 +62,11 @@ class Volunteer extends Model
         return $row ? new Volunteer($row) : null;
     }
 
-    public static function all(int $limit = 50, int $offset = 0)
+    public static function all()
     {
-        $st = self::getPDO()->prepare("SELECT * FROM Volunteer ORDER BY volunteer_id DESC LIMIT ? OFFSET ?");
-        $st->bindValue(1, $limit, PDO::PARAM_INT);
-        $st->bindValue(2, $offset, PDO::PARAM_INT);
-        $st->execute();
-        return array_map(fn($r) => new Volunteer($r), $st->fetchAll());
+        $st = self::getPDO()->query("SELECT * FROM volunteer ORDER BY volunteer_id ASC");
+        return $st->fetchAll(PDO::FETCH_ASSOC);
+
     }
 
     public function update()
@@ -73,7 +84,6 @@ class Volunteer extends Model
 
     public function delete()
     {
-        if ($this->volunteer_id === null) return false;
         $st = self::getPDO()->prepare("DELETE FROM Volunteer WHERE volunteer_id=?");
         return $st->execute([$this->volunteer_id]);
     }

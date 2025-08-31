@@ -1,6 +1,10 @@
 <?php
 require_once __DIR__ . '/../../classes/Model.php';
 require_once __DIR__ . '/../../classes/Volunteer.php';
+require_once __DIR__ . '/../../classes/Auth.php';
+
+Auth::requireAdmin();
+
 
 $errors = [];
 $old = [
@@ -53,7 +57,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             if (!isset($allowed[$mime])) {
                 $errors['profile_picture'] = 'Only JPG, PNG or WEBP are allowed.';
             } else {
-                $uploadDirFs = realpath(__DIR__ . '/../../') . '/volunteer_profiles';
+                $uploadDirFs = realpath(__DIR__ . '/../../') . '/public/uploads/volunteer_profiles';
                 if (!is_dir($uploadDirFs)) {
                     mkdir($uploadDirFs, 0755, true);
                 }
@@ -62,7 +66,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 if (!move_uploaded_file($tmp, $destFs)) {
                     $errors['profile_picture'] = 'Failed to save uploaded file.';
                 } else {
-                    $profilePath = '/volunteer_profiles/' . $newName;
+                    $profilePath = $newName;
                 }
             }
         }
