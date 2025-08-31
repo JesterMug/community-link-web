@@ -1,16 +1,8 @@
 <?php
-require_once __DIR__ . '/../../db_connection.php';
 require_once __DIR__ . '/../../classes/Model.php';
 require_once __DIR__ . '/../../classes/Organisation.php';
-/**
- * @var string $db_hostname
- * @var string $db_name
- * @var string $db_username
- * @var string $db_password
- */
-$dsn = "mysql:host=$db_hostname;dbname=$db_name";
-$dbh = new PDO($dsn, "$db_username", "$db_password");
-Model::setPDO($dbh);
+
+$all = Organisation::all();
 
 $errors = [];
 $old = [

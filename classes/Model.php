@@ -6,7 +6,17 @@
  */
 class Model
 {
-    protected static $pdo;
+    private static $pdo;
+
+
+    protected static function getPDO(): PDO
+    {
+        if (!self::$pdo) {
+            self::$pdo = require __DIR__ . '/../db_connection.php';
+        }
+        return self::$pdo;
+    }
+
 
     public static function setPDO(PDO $pdo)
     {

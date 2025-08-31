@@ -11,32 +11,33 @@ class User extends Model
 
     public function __construct(array $d = [])
     {
+
         foreach ($d as $k => $v) if (property_exists($this, $k)) $this->$k = $v;
     }
 
     public static function create(string $username, string $plainPassword): int
     {
         $hash = password_hash($plainPassword, PASSWORD_DEFAULT);
-        $st = self::$pdo->prepare("INSERT INTO user (username, password) VALUES (?, ?)");
+        $st = self::getPDO()->prepare("INSERT INTO user (username, password) VALUES (?, ?)");
         $st->execute([$username, $hash]);
-        return (int)self::$pdo->lastInsertId();
+        return (int)self::getPDO()->lastInsertId();
     }
 
     public static function delete(int $id): bool
     {
-      $st = self::$pdo->prepare("DELETE FROM user WHERE user_id=?");
+      $st = self::getPDO()->prepare("DELETE FROM user WHERE user_id=?");
       return $st->execute([$id]);
     }
 
     public static function all(): array
     {
-      $st = self::$pdo->query("SELECT user_id, username FROM user ORDER BY user_id ASC");
+      $st = self::getPDO()->query("SELECT user_id, username FROM user ORDER BY user_id ASC");
       return $st->fetchAll(PDO::FETCH_ASSOC);
     }
 
     public static function authenticate(string $username, string $plainPassword): ?User
     {
-        $st = self::$pdo->prepare("SELECT * FROM Users WHERE username=?");
+        $st = self::getPDO()->prepare("SELECT * FROM user WHERE username=?");
         $st->execute([$username]);
         $row = $st->fetch();
         if ($row && password_verify($plainPassword, $row['password'])) {
@@ -47,7 +48,7 @@ class User extends Model
 
     public static function find(int $id): ?User
     {
-        $st = self::$pdo->prepare("SELECT * FROM Users WHERE user_id=?");
+        $st = self::getPDO()->prepare("SELECT * FROM user WHERE user_id=?");
         $st->execute([$id]);
         $r = $st->fetch();
         return $r ? new User($r) : null;
