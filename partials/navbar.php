@@ -27,7 +27,7 @@
 
                 <!-- Organisation Registration -->
                 <li class="nav-item">
-                    <a class="nav-link" href="/Lab03_Group05/public/organisations/register.php">Organisation Registration</a>
+                    <a class="nav-link" href="/Lab03_Group05/public/organisations/view.php">Organisation Registration</a>
                 </li>
             </ul>
         </div>
