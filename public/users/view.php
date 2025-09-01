@@ -4,9 +4,12 @@ require_once __DIR__ . '/../../classes/Auth.php';
 
 Auth::requireAdmin();
 
+$currentUserId = Auth::userId();
+$users = User::all();
 
 $errors = [];
 $success = null;
+
 
 // Delete user
 if (isset($_GET['delete'])) {
@@ -18,8 +21,6 @@ if (isset($_GET['delete'])) {
   }
 }
 
-//Get users
-$users = User::all();
 ?>
 
 <!doctype html>
@@ -75,12 +76,12 @@ $users = User::all();
                    class="btn btn-sm btn-secondary">
                   Edit
                 </a>
-                <?php if ($u['role'] != 'admin'): ?>
-                <a href="?delete=<?= $u['user_id'] ?>"
-                   class="btn btn-sm btn-danger"
-                   onclick="return confirm('Delete this user?')">
-                  Delete
-                </a>
+                <?php if ($u['user_id'] !== $currentUserId): ?>
+                  <a href="?delete=<?= $u['user_id'] ?>"
+                     class="btn btn-sm btn-danger"
+                     onclick="return confirm('Delete this user?')">
+                    Delete
+                  </a>
                 <?php endif; ?>
               </td>
             </tr>
