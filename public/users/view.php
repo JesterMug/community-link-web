@@ -10,14 +10,23 @@ $users = User::all();
 $errors = [];
 $success = null;
 
+if (isset($_GET['success'])) {
+  $success = "User deleted successfully.";
+}
+
+if (isset($_GET['error'])) {
+  $errors[] = "Error deleting user. Please try again later.";
+}
 
 // Delete user
 if (isset($_GET['delete'])) {
   $deleteId = (int) $_GET['delete'];
   if (User::delete($deleteId)) {
-    $success = "User deleted successfully.";
+    header("Location: view.php?success=1");
+    exit;
   } else {
-    $errors[] = "Error deleting user.";
+    header("Location: view.php?error=delete_failed");
+    exit;
   }
 }
 

@@ -24,10 +24,10 @@ Data: data.sql
 - [x] Registration Form
 - [x] List of Users
 - [x] Password hashing
-- [ ] User modification
-- [ ] Admin can delete users except themselves
-- [ ] All inputs validated at front-end
-- [ ] All errors properly captured and handled
+- [x] User modification
+- [x] Admin can delete users except themselves
+- [x] All inputs validated at front-end
+- [x] All errors properly captured and handled
 - [ ] Using prepared statements throughout
 #### Contact Us Page
 - [ ] The contact us page and its form its properly implemented, and is publicly accessible
