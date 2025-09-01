@@ -66,7 +66,7 @@ if (isset($_GET['logout'])) {
                         <a class="nav-link" href="/Lab03_Group05/">Home</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="/Lab03_Group05/public/contact.php">Contact Us</a>
+                        <a class="nav-link" href="/Lab03_Group05/public/contact/add.php">Contact Us</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="/Lab03_Group05/public/auth/login.php">Login</a>
