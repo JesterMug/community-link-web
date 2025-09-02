@@ -1,5 +1,8 @@
 <?php
 require_once __DIR__ . '/../../classes/User.php';
+require_once __DIR__ . '/../../classes/Auth.php';
+
+Auth::requireAdmin();
 
 $errors = [];
 $success = null;
@@ -37,7 +40,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $errors[] = "Failed to update user.";
       }
     } catch (PDOException $e) {
-      // Generic catch-all fallback (e.g., DB down, other SQL issues)
       $errors[] = "An unexpected error occurred while updating the user.";
     }
   }
@@ -53,17 +55,33 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-LN+7fdVzj6u52u30Kp6M/trliBMCMKTyK833zpbD+pXdCLuTusPj697FH4R/5mcr" crossorigin="anonymous">
 </head>
-<body class="bg-light"> <?php require_once __DIR__ . '/../../partials/navbar.php'; ?>
+<body class="bg-light">
+
+<?php require_once __DIR__ . '/../../partials/navbar.php'; ?>
+
 <main class="container my-5">
   <div class="row justify-content-center">
     <div class="col">
       <div class="card shadow-sm">
-        <div class="card-header"><h1 class="h5 mb-0">Edit User</h1></div>
-        <div class="card-body"> <?php if ($success): ?>
+        <div class="card-header">
+          <h1 class="h5 mb-0">Edit User</h1>
+        </div>
+        <div class="card-body">
+          <?php if ($success): ?>
             <div
-              class="alert alert-success"><?= htmlspecialchars($success) ?></div> <?php endif; ?> <?php if ($errors): ?>
-            <div class="alert alert-danger"> <?php foreach ($errors as $error): ?>
-                <div><?= htmlspecialchars($error) ?></div> <?php endforeach; ?> </div> <?php endif; ?>
+              class="alert alert-success">
+              <?= htmlspecialchars($success) ?>
+            </div>
+          <?php endif; ?>
+          <?php if ($errors): ?>
+            <div class="alert alert-danger">
+              <?php foreach ($errors as $error): ?>
+                <div>
+                  <?= htmlspecialchars($error) ?>
+                </div>
+              <?php endforeach; ?>
+            </div>
+          <?php endif; ?>
           <form method="post">
             <div class="mb-3">
               <label for="username" class="form-label">Username

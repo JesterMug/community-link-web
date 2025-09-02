@@ -53,4 +53,10 @@ class ContactMessage extends Model
       $r = $st->fetch();
       return $r ? new ContactMessage($r) : null;
     }
+
+    //Only for removing all the messages while developing
+    public static function deleteAll() {
+      $st = self::getPDO()->prepare("DELETE FROM contact_messages");
+      return $st->execute();
+    }
 }

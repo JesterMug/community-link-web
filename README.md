@@ -30,13 +30,13 @@ Data: data.sql
 - [x] All errors properly captured and handled
 - [ ] Using prepared statements throughout
 #### Contact Us Page
-- [ ] The contact us page and its form its properly implemented, and is publicly accessible
-- [ ] The contact us form content is being sent to the specified email address using mail() in PHP
-- [ ] Listing of contact forms
+- [x] The contact us page and its form its properly implemented, and is publicly accessible
+- [x] The contact us form content is being sent to the specified email address using mail() in PHP
+- [x] Listing of contact forms
 - [ ] Contact form modification (track read status)
 - [ ] The user can delete a contact form
-- [ ] All inputs validated at front-end
-- [ ] Errors are properly captured and handled
+- [x] All inputs validated at front-end
+- [x] Errors are properly captured and handled
 - [ ] Using prepared statements throughout
 #### Events Page
 - [ ] Event listing page: When no record is found in the database, an appropriate message is displayed

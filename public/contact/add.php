@@ -23,7 +23,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
       $saved = ContactMessage::create($name, $email, $phone, $message);
 
       if ($saved) {
-        $to = 'jago.ayin@icloud.com';
+        $to = 'amy.tan@communitylink.com';
         $subject = "New Contact Form from $email";
         $body = "Name: $name\nEmail: $email\nPhone: $phone\n\nMessage:\n$message";
         $headers = "From: $email\r\nReply-To: $email";
