@@ -33,8 +33,8 @@ Data: data.sql
 - [x] The contact us page and its form its properly implemented, and is publicly accessible
 - [x] The contact us form content is being sent to the specified email address using mail() in PHP
 - [x] Listing of contact forms
-- [ ] Contact form modification (track read status)
-- [ ] The user can delete a contact form
+- [x] Contact form modification (track read status)
+- [x] The user can delete a contact form
 - [x] All inputs validated at front-end
 - [x] Errors are properly captured and handled
 - [ ] Using prepared statements throughout
