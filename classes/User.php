@@ -49,7 +49,35 @@ class User extends Model
       return $st->fetchAll(PDO::FETCH_ASSOC);
     }
 
-    public static function authenticate(string $username, string $plainPassword): ?User
+    public static function update(int $user_id, string $username, string $newPlainPassword): bool
+    {
+      $st = self::getPDO()->prepare("UPDATE user SET username=? WHERE user_id=?");
+      $status = $st->execute([$username, $user_id]);
+      if ($newPlainPassword !== '') {
+        $hash = password_hash($newPlainPassword, PASSWORD_DEFAULT);
+        $st = self::getPDO()->prepare("UPDATE user SET password = ? WHERE user_id = ?");
+        $status = $st->execute([$hash, $user_id]);
+      }
+      return $status;
+    }
+
+    public static function usernameExists(string $username, ?int $excludeId = null): bool
+    {
+      $sql = "SELECT COUNT(*) FROM user WHERE username = ?";
+      $params = [$username];
+
+      if ($excludeId !== null) {
+        $sql .= " AND user_id != ?";
+        $params[] = $excludeId;
+      }
+
+      $st = self::getPDO()->prepare($sql);
+      $st->execute($params);
+      return $st->fetchColumn();
+    }
+
+
+  public static function authenticate(string $username, string $plainPassword): ?User
     {
         $st = self::getPDO()->prepare("SELECT * FROM user WHERE username=?");
         $st->execute([$username]);
@@ -67,4 +95,6 @@ class User extends Model
         $r = $st->fetch();
         return $r ? new User($r) : null;
     }
+
+
 }

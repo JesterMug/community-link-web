@@ -4,22 +4,32 @@ require_once __DIR__ . '/../../classes/Auth.php';
 
 Auth::requireAdmin();
 
+$currentUserId = Auth::userId();
+$users = User::all();
 
 $errors = [];
 $success = null;
+
+if (isset($_GET['success'])) {
+  $success = "User deleted successfully.";
+}
+
+if (isset($_GET['error'])) {
+  $errors[] = "Error deleting user. Please try again later.";
+}
 
 // Delete user
 if (isset($_GET['delete'])) {
   $deleteId = (int) $_GET['delete'];
   if (User::delete($deleteId)) {
-    $success = "User deleted successfully.";
+    header("Location: view.php?success=1");
+    exit;
   } else {
-    $errors[] = "Error deleting user.";
+    header("Location: view.php?error=delete_failed");
+    exit;
   }
 }
 
-//Get users
-$users = User::all();
 ?>
 
 <!doctype html>
@@ -71,11 +81,17 @@ $users = User::all();
               <td><?= htmlspecialchars($u['user_id']) ?></td>
               <td><?= htmlspecialchars($u['username']) ?></td>
               <td>
-                <a href="?delete=<?= $u['user_id'] ?>"
-                   class="btn btn-sm btn-danger"
-                   onclick="return confirm('Delete this user?')">
-                  Delete
+                <a href="edit.php?id=<?= $u['user_id'] ?>"
+                   class="btn btn-sm btn-secondary">
+                  Edit
                 </a>
+                <?php if ($u['user_id'] !== $currentUserId): ?>
+                  <a href="?delete=<?= $u['user_id'] ?>"
+                     class="btn btn-sm btn-danger"
+                     onclick="return confirm('Delete this user?')">
+                    Delete
+                  </a>
+                <?php endif; ?>
               </td>
             </tr>
           <?php endforeach; ?>

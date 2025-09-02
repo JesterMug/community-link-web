@@ -85,4 +85,11 @@ class Auth {
         }
         return isset($_SESSION['role']) && $_SESSION['role'] === 'volunteer';
     }
+
+    public static function userId() {
+      if (session_status() == PHP_SESSION_NONE) {
+        session_start();
+      }
+      return $_SESSION['user_id'] ?? null;
+    }
 }

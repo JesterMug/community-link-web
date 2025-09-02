@@ -11,8 +11,8 @@ Date of Submission: 16 August 2025
 ## GitLab Repository
 https://git.infotech.monash.edu/fit2104/fit2104-2025-s2/group-assessment-repo/Lab03_Group05/-/tree/79044376ff0d5053ee262f20a9f347b680cf1f65/
 ## System Credentials
-Username:
-Password:
+Username: Amy
+Password: 123
 ## File Names
 Schema: schema.sql
 Data: data.sql
@@ -24,19 +24,19 @@ Data: data.sql
 - [x] Registration Form
 - [x] List of Users
 - [x] Password hashing
-- [ ] User modification
-- [ ] Admin can delete users except themselves
-- [ ] All inputs validated at front-end
-- [ ] All errors properly captured and handled
+- [x] User modification
+- [x] Admin can delete users except themselves
+- [x] All inputs validated at front-end
+- [x] All errors properly captured and handled
 - [ ] Using prepared statements throughout
 #### Contact Us Page
-- [ ] The contact us page and its form its properly implemented, and is publicly accessible
-- [ ] The contact us form content is being sent to the specified email address using mail() in PHP
-- [ ] Listing of contact forms
-- [ ] Contact form modification (track read status)
-- [ ] The user can delete a contact form
-- [ ] All inputs validated at front-end
-- [ ] Errors are properly captured and handled
+- [x] The contact us page and its form its properly implemented, and is publicly accessible
+- [x] The contact us form content is being sent to the specified email address using mail() in PHP
+- [x] Listing of contact forms
+- [x] Contact form modification (track read status)
+- [x] The user can delete a contact form
+- [x] All inputs validated at front-end
+- [x] Errors are properly captured and handled
 - [ ] Using prepared statements throughout
 #### Events Page
 - [ ] Event listing page: When no record is found in the database, an appropriate message is displayed
