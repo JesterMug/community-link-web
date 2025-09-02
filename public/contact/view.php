@@ -53,11 +53,6 @@ $messages = ContactMessage::all();
 <main class="container my-5">
   <div class="col d-flex justify-content-between align-items-center">
     <h1 class="h3 mb-4">Contact Messages</h1>
-    <a href="?delete_all=1"
-       class="btn btn-danger"
-       onclick="return confirm('Are you sure you want to delete all messages? This cannot be undone.');">
-      Delete All
-    </a>
   </div>
 
 
@@ -96,7 +91,7 @@ $messages = ContactMessage::all();
                 <td><?= $m['replied'] ? 'Yes' : 'No' ?></td>
                 <td><?= htmlspecialchars($m['created_at']) ?></td>
                 <td>
-                  <a href="edit.php?id=<?= $m['contact_messages_id'] ?>" class="btn btn-sm btn-primary">View</a>
+                  <a href="edit.php?id=<?= $m['contact_messages_id'] ?>" class="btn btn-sm btn-primary">Open</a>
                 </td>
               </tr>
             <?php endforeach; ?>
