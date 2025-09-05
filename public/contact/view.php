@@ -17,15 +17,6 @@ if (isset($_GET['delete'])) {
   }
 }
 
-// Handle delete all
-if (isset($_GET['delete_all'])) {
-  if (ContactMessage::deleteAll()) {
-    $success = "All messages deleted successfully.";
-  } else {
-    $errors[] = "Failed to delete all messages.";
-  }
-}
-
 // mark as replied
 if (isset($_GET['replied'])) {
   $id = (int)$_GET['replied'];

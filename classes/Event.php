@@ -34,6 +34,18 @@ class Event extends Model
         return $r ? new Event($r) : null;
     }
 
+    public static function all(): array
+    {
+      $sql = "SELECT e.*, o.organisation_name 
+                  FROM event e 
+                  JOIN organisation o ON e.organisation_id = o.organisation_id 
+                  ORDER BY e.date DESC";
+      $st = self::getPDO()->query($sql);
+      return $st->fetchAll(PDO::FETCH_ASSOC);
+    }
+
+
+
     public static function allUpcoming(): array
     {
         $st = self::getPDO()->prepare("SELECT * FROM Events WHERE date >= CURDATE() ORDER BY date ASC");
@@ -49,10 +61,10 @@ class Event extends Model
         return $st->execute([$this->title, $this->location, $this->description, $this->date, $this->organisation_id, $this->event_id]);
     }
 
-    public function delete(): bool
+    public static function delete(int $id): bool
     {
         $st = self::getPDO()->prepare("DELETE FROM Events WHERE event_id=?");
-        return $st->execute([$this->event_id]);
+        return $st->execute([$id]);
     }
 
     public function organisation(): ?array
@@ -72,4 +84,6 @@ class Event extends Model
         $st->execute([$this->event_id]);
         return $st->fetchAll();
     }
+
+
 }
