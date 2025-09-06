@@ -74,7 +74,7 @@ $events = Event::all();
             <td><?= htmlspecialchars($e['location']) ?></td>
             <td><?= htmlspecialchars($e['organisation_name']) ?></td>
             <td>
-              <a href="edit.php?id=<?= $e['event_id'] ?>" class="btn btn-sm btn-warning">Edit</a>
+              <a href="edit.php?id=<?= $e['event_id'] ?>" class="btn btn-sm btn-secondary">Edit</a>
               <a href="?delete=<?= $e['event_id'] ?>" class="btn btn-sm btn-danger"
                  onclick="return confirm('Delete this event?')">Delete</a>
             </td>
