@@ -3,7 +3,7 @@ require_once __DIR__ . '/../../db_connection.php';
 require_once __DIR__ . '/../../classes/Event.php';
 require_once __DIR__ . '/../../classes/Auth.php';
 
-Auth::requireAdmin();
+Auth::requireAuth();
 
 $errors = [];
 $success = null;
@@ -74,6 +74,7 @@ $events = Event::all();
             <td><?= htmlspecialchars($e['location']) ?></td>
             <td><?= htmlspecialchars($e['organisation_name']) ?></td>
             <td>
+              <a href="detail.php?id=<?= $e['event_id'] ?>" class="btn btn-sm btn-primary">View</a>
               <a href="edit.php?id=<?= $e['event_id'] ?>" class="btn btn-sm btn-secondary">Edit</a>
               <a href="?delete=<?= $e['event_id'] ?>" class="btn btn-sm btn-danger"
                  onclick="return confirm('Delete this event?')">Delete</a>

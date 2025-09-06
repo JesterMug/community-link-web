@@ -23,7 +23,7 @@ class VolunteerEvent extends Model
 
     public static function volunteersForEvent(int $event_id): array
     {
-        $sql = "SELECT v.* FROM Volunteers v
+        $sql = "SELECT v.* FROM Volunteer v
                 JOIN Volunteer_Event ve ON v.volunteer_id = ve.volunteer_id
                 WHERE ve.event_id = ?";
         $st = self::getPDO()->prepare($sql);

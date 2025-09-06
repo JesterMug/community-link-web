@@ -90,7 +90,7 @@ class Volunteer extends Model
 
     public function getAssignedEvents()
     {
-        $sql = "SELECT e.* FROM Events e
+        $sql = "SELECT e.* FROM Event e
                 JOIN Volunteer_Event ve ON ve.event_id = e.event_id
                 WHERE ve.volunteer_id = ?";
         $st = self::getPDO()->prepare($sql);

@@ -70,14 +70,14 @@ class Event extends Model
     public function organisation(): ?array
     {
         if (!$this->organisation_id) return null;
-        $st = self::getPDO()->prepare("SELECT * FROM Organisations WHERE organisation_id=?");
+        $st = self::getPDO()->prepare("SELECT * FROM Organisation WHERE organisation_id=?");
         $st->execute([$this->organisation_id]);
         return $st->fetch() ?: null;
     }
 
     public function volunteers(): array
     {
-        $sql = "SELECT v.* FROM Volunteers v
+        $sql = "SELECT v.* FROM Volunteer v
                 JOIN Volunteer_Event ve ON ve.volunteer_id = v.volunteer_id
                 WHERE ve.event_id = ?";
         $st = self::getPDO()->prepare($sql);
