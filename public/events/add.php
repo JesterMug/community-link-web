@@ -1,9 +1,11 @@
 <?php
 require_once __DIR__ . '/../../classes/Event.php';
 require_once __DIR__ . '/../../classes/Organisation.php';
+require_once __DIR__ . '/../../classes/Volunteer.php';
+require_once __DIR__ . '/../../classes/VolunteerEvent.php';
 require_once __DIR__ . '/../../classes/Auth.php';
 
-Auth::requireAdmin();
+Auth::requireAuth();
 
 $errors = [];
 
@@ -14,6 +16,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
   $date_part = trim($_POST['date']);
   $time_part = trim($_POST['time']);
   $organisation_id = (int)($_POST['organisation_id'] ?? 0);
+  $volunteers = $_POST['volunteers'] ?? [];
 
   if ($title === '' || $location === '' || $description === '' || $date_part === '' || $time_part === '' || !$organisation_id) {
     $errors[] = "All fields are required.";
@@ -30,6 +33,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     ]);
 
     if ($event->save()) {
+      foreach ($volunteers as $vid) {
+        VolunteerEvent::assign((int)$vid, $event->event_id);
+      }
       header("Location: view.php?success=1");
       exit;
     } else {
@@ -39,6 +45,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 }
 
 $orgs = Organisation::all();
+$volunteers = Volunteer::all();
 ?>
 
 
@@ -108,6 +115,18 @@ $orgs = Organisation::all();
             <div class="mb-3">
               <label for="description" class="form-label">Description <span class="text-danger">*</span></label>
               <textarea id="description" name="description" class="form-control" rows="4" required></textarea>
+            </div>
+
+            <div class="mb-3">
+              <label for="volunteers" class="form-label">Assign Volunteers</label>
+              <select id="volunteers" name="volunteers[]" class="form-select" multiple>
+                <?php foreach ($volunteers as $v): ?>
+                  <option value="<?= $v['volunteer_id'] ?>">
+                    <?= htmlspecialchars($v['full_name']) ?> (<?= htmlspecialchars($v['email']) ?>)
+                  </option>
+                <?php endforeach; ?>
+              </select>
+              <small class="text-muted">Hold shift to select multiple.</small>
             </div>
 
             <div class="d-flex gap-2">
