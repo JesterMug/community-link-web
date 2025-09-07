@@ -9,7 +9,7 @@ class Model
     private static $pdo;
 
 
-    protected static function getPDO(): PDO
+    public static function getPDO(): PDO
     {
         if (!self::$pdo) {
             self::$pdo = require __DIR__ . '/../db_connection.php';

@@ -12,7 +12,7 @@ class Auth {
         if ($user) {
             // Check if volunteer account is active
             if ($user->role === UserRole::VOLUNTEER && $user->volunteer_id) {
-                $db = require_once __DIR__ . '../db_connection.php';
+                $db = User::getPDO();
                 $stmt = $db->prepare("SELECT status FROM volunteer WHERE volunteer_id = ?");
                 $stmt->execute([$user->volunteer_id]);
                 $volunteer = $stmt->fetch();

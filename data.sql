@@ -6,6 +6,38 @@ SET time_zone = "+00:00";
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
 /*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
 /*!40101 SET NAMES utf8mb4 */;
+INSERT INTO `volunteer` (`volunteer_id`, `full_name`, `email`, `phone`, `skills`, `profile_picture`, `status`) VALUES
+(1, 'Austin Hinton', 'auctor.quis@hotmail.edu', '(04) 0003 4366', 'Asset Management', 'volunteer_1_1757236528.jpg', 'inactive'),
+(2, 'Nathan Kane', 'curabitur.vel@outlook.org', '(05) 2777 1436', 'Customer Relations, Public Relations, Payroll', 'volunteer_2_1757236537.jpg', 'inactive'),
+(3, 'Meredith Mcpherson', 'nisl.sem@icloud.couk', '(05) 0018 1447', 'Legal Department', 'volunteer_3_1757236547.jpg', 'inactive'),
+(4, 'Dante Estrada', 'mauris.erat.eget@hotmail.couk', '(02) 4507 7434', 'Finances, Accounting, Advertising, Legal Department', 'volunteer_4_1757236822.jpeg', 'inactive'),
+(5, 'Zahir Hinton', 'ante.iaculis@aol.edu', '(08) 2992 3148', 'Legal Department, Public Relations, Quality Assurance', 'volunteer_5_1757236833.jpeg', 'inactive'),
+(6, 'Tallulah Long', 'et.ultrices@aol.edu', '(02) 7861 3487', 'Customer Relations, Media Relations', 'volunteer_6_1757236843.jpeg', 'inactive'),
+(7, 'Caesar Caldwell', 'sed.pharetra@google.net', '(07) 3335 4793', 'Public Relations, Quality Assurance', 'volunteer_7_1757236863.jpeg', 'inactive'),
+(8, 'Quinlan Parker', 'fringilla.mi@icloud.couk', '(09) 6775 2622', 'Media Relations, Finances, Asset Management, Sales and Marketing, Accounting', 'volunteer_8_1757236871.jpeg', 'inactive'),
+(9, 'Jermaine Hernandez', 'tristique.pharetra.quisque@outlook.com', '(03) 4114 7128', 'Public Relations, Human Resources, Finances, Sales and Marketing', 'volunteer_9_1757236882.jpeg', 'inactive'),
+(10, 'Nomlanga Merritt', 'iaculis.nec.eleifend@yahoo.ca', '(01) 0903 2525', 'Customer Service, Tech Support, Human Resources', 'volunteer_10_1757236891.jpeg', 'inactive'),
+(11, 'Tiger Horn', 'ridiculus.mus.aenean@hotmail.net', '(05) 8833 0123', 'Tech Support', 'volunteer_11_1757236905.jpeg', 'inactive'),
+(12, 'Bernard Melendez', 'non@aol.couk', '(05) 1693 8275', 'Accounting, Payroll', 'volunteer_12_1757236921.jpeg', 'inactive');
+
+INSERT INTO `organisation` (`organisation_id`, `organisation_name`, `contact_person_full_name`, `email`, `phone`) VALUES
+(1, 'Vitae Diam Institute', 'Urielle Garza', 'placerat.orci.lacus@protonmail.couk', '(03) 5324 6751'),
+(2, 'Eu Turpis Institute', 'Brandon Christian', 'semper@icloud.net', '(06) 2806 3038'),
+(3, 'Velit Pellentesque Associates', 'Honorato Mosley', 'molestie.tortor@icloud.couk', '(07) 5688 4653'),
+(4, 'Gravida PC', 'Phillip Johnston', 'non.hendrerit.id@icloud.edu', '(03) 5568 9432'),
+(5, 'Donec Vitae Associates', 'Alfreda Munoz', 'ut.sem.nulla@protonmail.net', '(01) 5554 5200'),
+(6, 'Cras Dictum Ultricies Incorporated', 'Garrett Hopper', 'ac@outlook.org', '(07) 1611 1384'),
+(7, 'Dolor Dolor Ltd', 'Whilemina Branch', 'ac.urna.ut@google.couk', '(05) 9221 6582'),
+(8, 'Sed Industries', 'Robert Donovan', 'facilisis.magna@icloud.net', '(06) 8128 7071'),
+(9, 'Ac Mi LLP', 'Carissa Fitzgerald', 'ligula@yahoo.net', '(04) 0284 1735'),
+(10, 'Dolor Fusce Corporation', 'Vera Noel', 'sed.orci.lobortis@icloud.net', '(04) 3743 7756'),
+(11, 'Luctus Et Ultrices Company', 'Abel Flowers', 'nullam@protonmail.net', '(02) 7976 6641'),
+(12, 'Nec Industries', 'Hedda Dotson', 'ut.erat.sed@hotmail.org', '(01) 6451 2215'),
+(13, 'Mi Duis Industries', 'Lysandra Yates', 'ut.nulla@outlook.edu', '(09) 1696 5123'),
+(14, 'Tellus LLP', 'Hilel Aguirre', 'donec.tincidunt.donec@icloud.com', '(02) 4632 5613'),
+(15, 'Vivamus Nibh Dolor Incorporated', 'Hiroko Dickson', 'adipiscing@outlook.ca', '(06) 7151 1315');
+
+
 
 
 INSERT INTO `contact_messages` (`contact_messages_id`, `full_name`, `email`, `phone`, `message`, `replied`, `created_at`) VALUES
@@ -39,23 +71,6 @@ INSERT INTO `event` (`event_id`, `title`, `location`, `description`, `date`, `or
 (11, 'Vivamus rhoncus. Donec', 'Ap #697-2985 Metus. Street', 'egestas. Fusce aliquet magna a neque. Nullam ut nisi a odio semper cursus. Integer mollis. Integer tincidunt aliquam arcu. Aliquam ultrices', '2027-04-09 12:29:33', 2),
 (12, 'tellus justo sit amet nulla. Donec non justo. Proin', 'Ap #268-4153 Diam. Rd.', 'amet, consectetuer adipiscing elit. Etiam laoreet, libero et tristique pellentesque, tellus sem mollis dui, in sodales elit erat vitae risus. Duis a mi fringilla mi lacinia mattis. Integer eu lacus. Quisque imperdiet, erat nonummy ultricies ornare, elit elit fermentum risus, at fringilla purus mauris a nunc. In at pede. Cras vulputate velit eu sem. Pellentesque ut ipsum', '2027-01-20 04:04:52', 11);
 
-INSERT INTO `organisation` (`organisation_id`, `organisation_name`, `contact_person_full_name`, `email`, `phone`) VALUES
-(1, 'Vitae Diam Institute', 'Urielle Garza', 'placerat.orci.lacus@protonmail.couk', '(03) 5324 6751'),
-(2, 'Eu Turpis Institute', 'Brandon Christian', 'semper@icloud.net', '(06) 2806 3038'),
-(3, 'Velit Pellentesque Associates', 'Honorato Mosley', 'molestie.tortor@icloud.couk', '(07) 5688 4653'),
-(4, 'Gravida PC', 'Phillip Johnston', 'non.hendrerit.id@icloud.edu', '(03) 5568 9432'),
-(5, 'Donec Vitae Associates', 'Alfreda Munoz', 'ut.sem.nulla@protonmail.net', '(01) 5554 5200'),
-(6, 'Cras Dictum Ultricies Incorporated', 'Garrett Hopper', 'ac@outlook.org', '(07) 1611 1384'),
-(7, 'Dolor Dolor Ltd', 'Whilemina Branch', 'ac.urna.ut@google.couk', '(05) 9221 6582'),
-(8, 'Sed Industries', 'Robert Donovan', 'facilisis.magna@icloud.net', '(06) 8128 7071'),
-(9, 'Ac Mi LLP', 'Carissa Fitzgerald', 'ligula@yahoo.net', '(04) 0284 1735'),
-(10, 'Dolor Fusce Corporation', 'Vera Noel', 'sed.orci.lobortis@icloud.net', '(04) 3743 7756'),
-(11, 'Luctus Et Ultrices Company', 'Abel Flowers', 'nullam@protonmail.net', '(02) 7976 6641'),
-(12, 'Nec Industries', 'Hedda Dotson', 'ut.erat.sed@hotmail.org', '(01) 6451 2215'),
-(13, 'Mi Duis Industries', 'Lysandra Yates', 'ut.nulla@outlook.edu', '(09) 1696 5123'),
-(14, 'Tellus LLP', 'Hilel Aguirre', 'donec.tincidunt.donec@icloud.com', '(02) 4632 5613'),
-(15, 'Vivamus Nibh Dolor Incorporated', 'Hiroko Dickson', 'adipiscing@outlook.ca', '(06) 7151 1315');
-
 INSERT INTO `user` (`user_id`, `username`, `password`, `role`, `volunteer_id`) VALUES
 (9, 'Amy', '$2y$10$bM1yAKHjdoqUgdJ2nh24I.yVfWWUbR3w3.tVV9ExliNDsQFCC.R1a', 'admin', NULL),
 (21, 'Austin', '$2y$12$6Nm4GVCygXR8kCLgV.acmebCeM92w4Uo6hgcu3gkhfAvJv68mOaWe', 'volunteer', 1),
@@ -68,20 +83,6 @@ INSERT INTO `user` (`user_id`, `username`, `password`, `role`, `volunteer_id`) V
 (28, 'Quinlan', '$2y$12$fYF0Z3407H3pHjS3f0Bgj.nZwCEbwKcuTHkBeWi.4V52lLBVugawS', 'volunteer', 8),
 (29, 'Jermaine', '$2y$12$BQ/9pOG3xuW524y5m6SKh.O80pqWbGAAHOupeVwB0PTBKwm0.WXqO', 'volunteer', 9),
 (30, 'Nomlanga', '$2y$12$.tawCWq8DuHEF5ZqOy58ee3ODtPku3qoCMrfZyimv.PqE/N.pvdHW', 'volunteer', 10);
-
-INSERT INTO `volunteer` (`volunteer_id`, `full_name`, `email`, `phone`, `skills`, `profile_picture`, `status`) VALUES
-(1, 'Austin Hinton', 'auctor.quis@hotmail.edu', '(04) 0003 4366', 'Asset Management', 'volunteer_1_1757236528.jpg', 'inactive'),
-(2, 'Nathan Kane', 'curabitur.vel@outlook.org', '(05) 2777 1436', 'Customer Relations, Public Relations, Payroll', 'volunteer_2_1757236537.jpg', 'inactive'),
-(3, 'Meredith Mcpherson', 'nisl.sem@icloud.couk', '(05) 0018 1447', 'Legal Department', 'volunteer_3_1757236547.jpg', 'inactive'),
-(4, 'Dante Estrada', 'mauris.erat.eget@hotmail.couk', '(02) 4507 7434', 'Finances, Accounting, Advertising, Legal Department', 'volunteer_4_1757236822.jpeg', 'inactive'),
-(5, 'Zahir Hinton', 'ante.iaculis@aol.edu', '(08) 2992 3148', 'Legal Department, Public Relations, Quality Assurance', 'volunteer_5_1757236833.jpeg', 'inactive'),
-(6, 'Tallulah Long', 'et.ultrices@aol.edu', '(02) 7861 3487', 'Customer Relations, Media Relations', 'volunteer_6_1757236843.jpeg', 'inactive'),
-(7, 'Caesar Caldwell', 'sed.pharetra@google.net', '(07) 3335 4793', 'Public Relations, Quality Assurance', 'volunteer_7_1757236863.jpeg', 'inactive'),
-(8, 'Quinlan Parker', 'fringilla.mi@icloud.couk', '(09) 6775 2622', 'Media Relations, Finances, Asset Management, Sales and Marketing, Accounting', 'volunteer_8_1757236871.jpeg', 'inactive'),
-(9, 'Jermaine Hernandez', 'tristique.pharetra.quisque@outlook.com', '(03) 4114 7128', 'Public Relations, Human Resources, Finances, Sales and Marketing', 'volunteer_9_1757236882.jpeg', 'inactive'),
-(10, 'Nomlanga Merritt', 'iaculis.nec.eleifend@yahoo.ca', '(01) 0903 2525', 'Customer Service, Tech Support, Human Resources', 'volunteer_10_1757236891.jpeg', 'inactive'),
-(11, 'Tiger Horn', 'ridiculus.mus.aenean@hotmail.net', '(05) 8833 0123', 'Tech Support', 'volunteer_11_1757236905.jpeg', 'inactive'),
-(12, 'Bernard Melendez', 'non@aol.couk', '(05) 1693 8275', 'Accounting, Payroll', 'volunteer_12_1757236921.jpeg', 'inactive');
 
 INSERT INTO `volunteer_event` (`event_id`, `volunteer_id`) VALUES
 (9, 2),
