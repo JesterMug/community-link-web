@@ -31,6 +31,7 @@ class ContactMessage extends Model
     public static function all(): array
     {
       $st = self::getPDO()->query("SELECT * FROM contact_messages ORDER BY created_at DESC");
+      $st->execute();
       return $st->fetchAll(PDO::FETCH_ASSOC);
     }
 
