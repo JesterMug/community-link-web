@@ -66,10 +66,18 @@ class Volunteer extends Model
     {
         $st = self::getPDO()->query("SELECT * FROM volunteer ORDER BY volunteer_id ASC");
         return $st->fetchAll(PDO::FETCH_ASSOC);
-
     }
 
-    public function update()
+    public static function availableForAccount(): array
+    {
+      $sql = "SELECT v.* FROM volunteer v LEFT JOIN user u ON v.volunteer_id = u.volunteer_id
+              WHERE u.user_id IS NULL ORDER BY v.full_name ASC";
+      $st = self::getPDO()->query($sql);
+      return $st->fetchAll(PDO::FETCH_ASSOC);
+    }
+
+
+  public function update()
     {
         if ($this->volunteer_id === null) return false;
         $sql = "UPDATE Volunteer

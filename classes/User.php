@@ -12,7 +12,7 @@ class User extends Model
     public ?int $user_id = null;
     public string $username;
     public string $password;
-    public UserRole $role = UserRole::ADMIN;
+    public UserRole $role = UserRole::VOLUNTEER;
     public ?int $volunteer_id = null;
     
 
@@ -29,7 +29,7 @@ class User extends Model
         }
     }
 
-    public static function create(string $username, string $plainPassword, UserRole $role = UserRole::ADMIN, ?int $volunteer_id = null): int
+    public static function create(string $username, string $plainPassword, UserRole $role, ?int $volunteer_id): int
     {
         $hash = password_hash($plainPassword, PASSWORD_DEFAULT);
         $st = self::getPDO()->prepare("INSERT INTO user (username, password, role, volunteer_id) VALUES (?, ?, ?, ?)");
