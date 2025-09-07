@@ -46,7 +46,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 }
 
 $orgs = Organisation::all();
-$allVolunteers = Volunteer::all();
+$allVolunteers = Volunteer::availableForEvent();
 $assignedVolunteers = array_column(VolunteerEvent::volunteersForEvent($event->event_id), 'volunteer_id');
 
 $date_value = $time_value = '';

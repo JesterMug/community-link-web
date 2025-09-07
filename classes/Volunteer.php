@@ -76,6 +76,14 @@ class Volunteer extends Model
       return $st->fetchAll(PDO::FETCH_ASSOC);
     }
 
+  public static function availableForEvent(): array
+  {
+    $sql = "SELECT v.* FROM volunteer v WHERE v.status = 'active' ORDER BY v.full_name ASC";
+    $st = self::getPDO()->prepare($sql);
+    $st->execute();
+    return $st->fetchAll(PDO::FETCH_ASSOC);
+  }
+
 
   public function update()
     {

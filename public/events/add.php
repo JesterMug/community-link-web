@@ -45,7 +45,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 }
 
 $orgs = Organisation::all();
-$volunteers = Volunteer::all();
+$volunteers = Volunteer::availableForEvent();
 ?>
 
 
