@@ -20,6 +20,7 @@ Data: data.sql
 ### Jagannath
 - [x] Initial GitLab folder setup
 - [x] Database Schema
+- [x] Sample database data
 #### User Pages
 - [x] Registration Form
 - [x] List of Users
