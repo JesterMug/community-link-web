@@ -1,44 +1,45 @@
+-- phpMyAdmin SQL Dump
+-- version 5.2.2
+-- https://www.phpmyadmin.net/
+--
+-- Host: localhost
+-- Generation Time: Sep 07, 2025 at 12:46 PM
+-- Server version: 9.4.0
+-- PHP Version: 8.4.12
+
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
 SET time_zone = "+00:00";
+
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
 /*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
 /*!40101 SET NAMES utf8mb4 */;
-INSERT INTO `volunteer` (`volunteer_id`, `full_name`, `email`, `phone`, `skills`, `profile_picture`, `status`) VALUES
-(1, 'Austin Hinton', 'auctor.quis@hotmail.edu', '(04) 0003 4366', 'Asset Management', 'volunteer_1_1757236528.jpg', 'inactive'),
-(2, 'Nathan Kane', 'curabitur.vel@outlook.org', '(05) 2777 1436', 'Customer Relations, Public Relations, Payroll', 'volunteer_2_1757236537.jpg', 'inactive'),
-(3, 'Meredith Mcpherson', 'nisl.sem@icloud.couk', '(05) 0018 1447', 'Legal Department', 'volunteer_3_1757236547.jpg', 'inactive'),
-(4, 'Dante Estrada', 'mauris.erat.eget@hotmail.couk', '(02) 4507 7434', 'Finances, Accounting, Advertising, Legal Department', 'volunteer_4_1757236822.jpeg', 'inactive'),
-(5, 'Zahir Hinton', 'ante.iaculis@aol.edu', '(08) 2992 3148', 'Legal Department, Public Relations, Quality Assurance', 'volunteer_5_1757236833.jpeg', 'inactive'),
-(6, 'Tallulah Long', 'et.ultrices@aol.edu', '(02) 7861 3487', 'Customer Relations, Media Relations', 'volunteer_6_1757236843.jpeg', 'inactive'),
-(7, 'Caesar Caldwell', 'sed.pharetra@google.net', '(07) 3335 4793', 'Public Relations, Quality Assurance', 'volunteer_7_1757236863.jpeg', 'inactive'),
-(8, 'Quinlan Parker', 'fringilla.mi@icloud.couk', '(09) 6775 2622', 'Media Relations, Finances, Asset Management, Sales and Marketing, Accounting', 'volunteer_8_1757236871.jpeg', 'inactive'),
-(9, 'Jermaine Hernandez', 'tristique.pharetra.quisque@outlook.com', '(03) 4114 7128', 'Public Relations, Human Resources, Finances, Sales and Marketing', 'volunteer_9_1757236882.jpeg', 'inactive'),
-(10, 'Nomlanga Merritt', 'iaculis.nec.eleifend@yahoo.ca', '(01) 0903 2525', 'Customer Service, Tech Support, Human Resources', 'volunteer_10_1757236891.jpeg', 'inactive'),
-(11, 'Tiger Horn', 'ridiculus.mus.aenean@hotmail.net', '(05) 8833 0123', 'Tech Support', 'volunteer_11_1757236905.jpeg', 'inactive'),
-(12, 'Bernard Melendez', 'non@aol.couk', '(05) 1693 8275', 'Accounting, Payroll', 'volunteer_12_1757236921.jpeg', 'inactive');
 
-INSERT INTO `organisation` (`organisation_id`, `organisation_name`, `contact_person_full_name`, `email`, `phone`) VALUES
-(1, 'Vitae Diam Institute', 'Urielle Garza', 'placerat.orci.lacus@protonmail.couk', '(03) 5324 6751'),
-(2, 'Eu Turpis Institute', 'Brandon Christian', 'semper@icloud.net', '(06) 2806 3038'),
-(3, 'Velit Pellentesque Associates', 'Honorato Mosley', 'molestie.tortor@icloud.couk', '(07) 5688 4653'),
-(4, 'Gravida PC', 'Phillip Johnston', 'non.hendrerit.id@icloud.edu', '(03) 5568 9432'),
-(5, 'Donec Vitae Associates', 'Alfreda Munoz', 'ut.sem.nulla@protonmail.net', '(01) 5554 5200'),
-(6, 'Cras Dictum Ultricies Incorporated', 'Garrett Hopper', 'ac@outlook.org', '(07) 1611 1384'),
-(7, 'Dolor Dolor Ltd', 'Whilemina Branch', 'ac.urna.ut@google.couk', '(05) 9221 6582'),
-(8, 'Sed Industries', 'Robert Donovan', 'facilisis.magna@icloud.net', '(06) 8128 7071'),
-(9, 'Ac Mi LLP', 'Carissa Fitzgerald', 'ligula@yahoo.net', '(04) 0284 1735'),
-(10, 'Dolor Fusce Corporation', 'Vera Noel', 'sed.orci.lobortis@icloud.net', '(04) 3743 7756'),
-(11, 'Luctus Et Ultrices Company', 'Abel Flowers', 'nullam@protonmail.net', '(02) 7976 6641'),
-(12, 'Nec Industries', 'Hedda Dotson', 'ut.erat.sed@hotmail.org', '(01) 6451 2215'),
-(13, 'Mi Duis Industries', 'Lysandra Yates', 'ut.nulla@outlook.edu', '(09) 1696 5123'),
-(14, 'Tellus LLP', 'Hilel Aguirre', 'donec.tincidunt.donec@icloud.com', '(02) 4632 5613'),
-(15, 'Vivamus Nibh Dolor Incorporated', 'Hiroko Dickson', 'adipiscing@outlook.ca', '(06) 7151 1315');
+--
+-- Database: `fit2104_community_link`
+--
 
+-- --------------------------------------------------------
 
+--
+-- Table structure for table `contact_messages`
+--
 
+CREATE TABLE `contact_messages` (
+  `contact_messages_id` int NOT NULL,
+  `full_name` varchar(128) COLLATE utf8mb4_general_ci NOT NULL,
+  `email` varchar(256) COLLATE utf8mb4_general_ci NOT NULL,
+  `phone` varchar(20) COLLATE utf8mb4_general_ci NOT NULL,
+  `message` text COLLATE utf8mb4_general_ci NOT NULL,
+  `replied` tinyint(1) NOT NULL DEFAULT '0',
+  `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `contact_messages`
+--
 
 INSERT INTO `contact_messages` (`contact_messages_id`, `full_name`, `email`, `phone`, `message`, `replied`, `created_at`) VALUES
 (1, 'Jenette Carey', 'elit@aol.ca', '(04) 0242 1346', 'ligula. Aenean euismod mauris eu elit. Nulla facilisi. Sed neque. Sed eget lacus. Mauris non dui nec urna suscipit nonummy. Fusce fermentum fermentum arcu. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae Phasellus ornare. Fusce mollis. Duis sit amet diam eu dolor egestas rhoncus. Proin nisl sem, consequat nec, mollis vitae, posuere at,', 1, '2025-09-07 08:36:30'),
@@ -57,6 +58,25 @@ INSERT INTO `contact_messages` (`contact_messages_id`, `full_name`, `email`, `ph
 (14, 'Roary Wolf', 'quam.vel@protonmail.net', '(02) 9789 8316', 'ornare, libero at auctor ullamcorper, nisl arcu iaculis enim, sit amet ornare lectus justo eu arcu. Morbi sit amet massa. Quisque porttitor eros nec tellus. Nunc lectus pede, ultrices a, auctor non, feugiat nec, diam. Duis mi enim, condimentum eget, volutpat ornare, facilisis eget, ipsum. Donec sollicitudin adipiscing ligula. Aenean gravida nunc sed pede. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Proin vel arcu eu odio tristique pharetra. Quisque ac libero', 0, '2025-09-07 08:36:30'),
 (15, 'Dominic Sharpe', 'fringilla.mi.lacinia@google.net', '(04) 3244 9141', 'egestas, urna justo faucibus lectus, a sollicitudin orci sem eget massa. Suspendisse eleifend. Cras sed leo. Cras vehicula aliquet libero. Integer in magna. Phasellus dolor elit, pellentesque a, facilisis non, bibendum sed, est. Nunc laoreet lectus quis massa. Mauris vestibulum, neque sed dictum eleifend, nunc risus varius orci, in consequat enim diam vel arcu. Curabitur ut odio vel', 0, '2025-09-07 08:36:30');
 
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `event`
+--
+
+CREATE TABLE `event` (
+  `event_id` int NOT NULL,
+  `title` varchar(256) COLLATE utf8mb4_general_ci NOT NULL,
+  `location` varchar(256) COLLATE utf8mb4_general_ci NOT NULL,
+  `description` text COLLATE utf8mb4_general_ci NOT NULL,
+  `date` datetime NOT NULL,
+  `organisation_id` int NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `event`
+--
+
 INSERT INTO `event` (`event_id`, `title`, `location`, `description`, `date`, `organisation_id`) VALUES
 (1, 'quis, tristique ac,', 'Ap #517-935 Dictum Street', 'lacus. Nulla tincidunt, neque vitae semper egestas, urna justo faucibus lectus, a sollicitudin orci sem eget massa. Suspendisse eleifend. Cras sed leo. Cras vehicula aliquet libero. Integer in magna. Phasellus dolor elit, pellentesque a, facilisis non, bibendum sed, est. Nunc laoreet lectus quis massa. Mauris vestibulum, neque sed dictum eleifend, nunc risus varius orci, in consequat enim diam vel arcu. Curabitur ut odio vel est tempor bibendum. Donec felis orci, adipiscing non, luctus sit amet, faucibus ut, nulla. Cras eu tellus eu augue porttitor interdum. Sed', '2026-05-17 21:50:00', 11),
 (2, 'dui nec urna suscipit nonummy. Fusce', '396-9133 Nostra, Ave', 'Integer aliquam adipiscing lacus. Ut nec urna et arcu imperdiet ullamcorper. Duis at lacus. Quisque purus sapien, gravida non, sollicitudin a, malesuada id, erat. Etiam vestibulum', '2027-02-25 20:15:16', 4),
@@ -71,6 +91,59 @@ INSERT INTO `event` (`event_id`, `title`, `location`, `description`, `date`, `or
 (11, 'Vivamus rhoncus. Donec', 'Ap #697-2985 Metus. Street', 'egestas. Fusce aliquet magna a neque. Nullam ut nisi a odio semper cursus. Integer mollis. Integer tincidunt aliquam arcu. Aliquam ultrices', '2027-04-09 12:29:33', 2),
 (12, 'tellus justo sit amet nulla. Donec non justo. Proin', 'Ap #268-4153 Diam. Rd.', 'amet, consectetuer adipiscing elit. Etiam laoreet, libero et tristique pellentesque, tellus sem mollis dui, in sodales elit erat vitae risus. Duis a mi fringilla mi lacinia mattis. Integer eu lacus. Quisque imperdiet, erat nonummy ultricies ornare, elit elit fermentum risus, at fringilla purus mauris a nunc. In at pede. Cras vulputate velit eu sem. Pellentesque ut ipsum', '2027-01-20 04:04:52', 11);
 
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `organisation`
+--
+
+CREATE TABLE `organisation` (
+  `organisation_id` int NOT NULL,
+  `organisation_name` varchar(256) COLLATE utf8mb4_general_ci NOT NULL,
+  `contact_person_full_name` varchar(128) COLLATE utf8mb4_general_ci NOT NULL,
+  `email` varchar(256) COLLATE utf8mb4_general_ci NOT NULL,
+  `phone` varchar(20) COLLATE utf8mb4_general_ci NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `organisation`
+--
+
+INSERT INTO `organisation` (`organisation_id`, `organisation_name`, `contact_person_full_name`, `email`, `phone`) VALUES
+(1, 'Vitae Diam Institute', 'Urielle Garza', 'placerat.orci.lacus@protonmail.couk', '(03) 5324 6751'),
+(2, 'Eu Turpis Institute', 'Brandon Christian', 'semper@icloud.net', '(06) 2806 3038'),
+(3, 'Velit Pellentesque Associates', 'Honorato Mosley', 'molestie.tortor@icloud.couk', '(07) 5688 4653'),
+(4, 'Gravida PC', 'Phillip Johnston', 'non.hendrerit.id@icloud.edu', '(03) 5568 9432'),
+(5, 'Donec Vitae Associates', 'Alfreda Munoz', 'ut.sem.nulla@protonmail.net', '(01) 5554 5200'),
+(6, 'Cras Dictum Ultricies Incorporated', 'Garrett Hopper', 'ac@outlook.org', '(07) 1611 1384'),
+(7, 'Dolor Dolor Ltd', 'Whilemina Branch', 'ac.urna.ut@google.couk', '(05) 9221 6582'),
+(8, 'Sed Industries', 'Robert Donovan', 'facilisis.magna@icloud.net', '(06) 8128 7071'),
+(9, 'Ac Mi LLP', 'Carissa Fitzgerald', 'ligula@yahoo.net', '(04) 0284 1735'),
+(10, 'Dolor Fusce Corporation', 'Vera Noel', 'sed.orci.lobortis@icloud.net', '(04) 3743 7756'),
+(11, 'Luctus Et Ultrices Company', 'Abel Flowers', 'nullam@protonmail.net', '(02) 7976 6641'),
+(12, 'Nec Industries', 'Hedda Dotson', 'ut.erat.sed@hotmail.org', '(01) 6451 2215'),
+(13, 'Mi Duis Industries', 'Lysandra Yates', 'ut.nulla@outlook.edu', '(09) 1696 5123'),
+(14, 'Tellus LLP', 'Hilel Aguirre', 'donec.tincidunt.donec@icloud.com', '(02) 4632 5613'),
+(15, 'Vivamus Nibh Dolor Incorporated', 'Hiroko Dickson', 'adipiscing@outlook.ca', '(06) 7151 1315');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `user`
+--
+
+CREATE TABLE `user` (
+  `user_id` int NOT NULL,
+  `username` varchar(128) COLLATE utf8mb4_general_ci NOT NULL,
+  `password` varchar(256) COLLATE utf8mb4_general_ci NOT NULL,
+  `role` enum('admin','volunteer') COLLATE utf8mb4_general_ci NOT NULL DEFAULT 'admin',
+  `volunteer_id` int DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `user`
+--
+
 INSERT INTO `user` (`user_id`, `username`, `password`, `role`, `volunteer_id`) VALUES
 (9, 'Amy', '$2y$10$bM1yAKHjdoqUgdJ2nh24I.yVfWWUbR3w3.tVV9ExliNDsQFCC.R1a', 'admin', NULL),
 (21, 'Austin', '$2y$12$6Nm4GVCygXR8kCLgV.acmebCeM92w4Uo6hgcu3gkhfAvJv68mOaWe', 'volunteer', 1),
@@ -84,6 +157,55 @@ INSERT INTO `user` (`user_id`, `username`, `password`, `role`, `volunteer_id`) V
 (29, 'Jermaine', '$2y$12$BQ/9pOG3xuW524y5m6SKh.O80pqWbGAAHOupeVwB0PTBKwm0.WXqO', 'volunteer', 9),
 (30, 'Nomlanga', '$2y$12$.tawCWq8DuHEF5ZqOy58ee3ODtPku3qoCMrfZyimv.PqE/N.pvdHW', 'volunteer', 10);
 
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `volunteer`
+--
+
+CREATE TABLE `volunteer` (
+  `volunteer_id` int NOT NULL,
+  `full_name` varchar(128) COLLATE utf8mb4_general_ci NOT NULL,
+  `email` varchar(256) COLLATE utf8mb4_general_ci NOT NULL,
+  `phone` varchar(20) COLLATE utf8mb4_general_ci NOT NULL,
+  `skills` text COLLATE utf8mb4_general_ci,
+  `profile_picture` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `status` enum('active','inactive') COLLATE utf8mb4_general_ci NOT NULL DEFAULT 'inactive'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `volunteer`
+--
+
+INSERT INTO `volunteer` (`volunteer_id`, `full_name`, `email`, `phone`, `skills`, `profile_picture`, `status`) VALUES
+(1, 'Austin Hinton', 'auctor.quis@hotmail.edu', '(04) 0003 4366', 'Asset Management, Another Skill', 'volunteer_1_1757236528.jpg', 'active'),
+(2, 'Nathan Kane', 'curabitur.vel@outlook.org', '(05) 2777 1436', 'Customer Relations, Public Relations, Payroll', 'volunteer_2_1757236537.jpg', 'inactive'),
+(3, 'Meredith Mcpherson', 'nisl.sem@icloud.couk', '(05) 0018 1447', 'Legal Department', 'volunteer_3_1757236547.jpg', 'active'),
+(4, 'Dante Estrada', 'mauris.erat.eget@hotmail.couk', '(02) 4507 7434', 'Finances, Accounting, Advertising, Legal Department', 'volunteer_4_1757236822.jpeg', 'active'),
+(5, 'Zahir Hinton', 'ante.iaculis@aol.edu', '(08) 2992 3148', 'Legal Department, Public Relations, Quality Assurance', 'volunteer_5_1757236833.jpeg', 'inactive'),
+(6, 'Tallulah Long', 'et.ultrices@aol.edu', '(02) 7861 3487', 'Customer Relations, Media Relations', 'volunteer_6_1757236843.jpeg', 'inactive'),
+(7, 'Caesar Caldwell', 'sed.pharetra@google.net', '(07) 3335 4793', 'Public Relations, Quality Assurance', 'volunteer_7_1757236863.jpeg', 'active'),
+(8, 'Quinlan Parker', 'fringilla.mi@icloud.couk', '(09) 6775 2622', 'Media Relations, Finances, Asset Management, Sales and Marketing, Accounting', 'volunteer_8_1757236871.jpeg', 'inactive'),
+(9, 'Jermaine Hernandez', 'tristique.pharetra.quisque@outlook.com', '(03) 4114 7128', 'Public Relations, Human Resources, Finances, Sales and Marketing', 'volunteer_9_1757236882.jpeg', 'inactive'),
+(10, 'Nomlanga Merritt', 'iaculis.nec.eleifend@yahoo.ca', '(01) 0903 2525', 'Customer Service, Tech Support, Human Resources', 'volunteer_10_1757236891.jpeg', 'inactive'),
+(11, 'Tiger Horn', 'ridiculus.mus.aenean@hotmail.net', '(05) 8833 0123', 'Tech Support', 'volunteer_11_1757236905.jpeg', 'active'),
+(12, 'Bernard Melendez', 'non@aol.couk', '(05) 1693 8275', 'Accounting, Payroll', 'volunteer_12_1757236921.jpeg', 'inactive');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `volunteer_event`
+--
+
+CREATE TABLE `volunteer_event` (
+  `event_id` int NOT NULL,
+  `volunteer_id` int NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `volunteer_event`
+--
+
 INSERT INTO `volunteer_event` (`event_id`, `volunteer_id`) VALUES
 (9, 2),
 (9, 3),
@@ -95,6 +217,109 @@ INSERT INTO `volunteer_event` (`event_id`, `volunteer_id`) VALUES
 (6, 10),
 (6, 11),
 (8, 12);
+
+--
+-- Indexes for dumped tables
+--
+
+--
+-- Indexes for table `contact_messages`
+--
+ALTER TABLE `contact_messages`
+  ADD PRIMARY KEY (`contact_messages_id`);
+
+--
+-- Indexes for table `event`
+--
+ALTER TABLE `event`
+  ADD PRIMARY KEY (`event_id`),
+  ADD KEY `organisation_id` (`organisation_id`);
+
+--
+-- Indexes for table `organisation`
+--
+ALTER TABLE `organisation`
+  ADD PRIMARY KEY (`organisation_id`),
+  ADD UNIQUE KEY `email` (`email`);
+
+--
+-- Indexes for table `user`
+--
+ALTER TABLE `user`
+  ADD PRIMARY KEY (`user_id`),
+  ADD UNIQUE KEY `username` (`username`),
+  ADD KEY `volunteer_id` (`volunteer_id`);
+
+--
+-- Indexes for table `volunteer`
+--
+ALTER TABLE `volunteer`
+  ADD PRIMARY KEY (`volunteer_id`),
+  ADD UNIQUE KEY `email` (`email`);
+
+--
+-- Indexes for table `volunteer_event`
+--
+ALTER TABLE `volunteer_event`
+  ADD PRIMARY KEY (`event_id`,`volunteer_id`),
+  ADD KEY `volunteer_id` (`volunteer_id`);
+
+--
+-- AUTO_INCREMENT for dumped tables
+--
+
+--
+-- AUTO_INCREMENT for table `contact_messages`
+--
+ALTER TABLE `contact_messages`
+  MODIFY `contact_messages_id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
+
+--
+-- AUTO_INCREMENT for table `event`
+--
+ALTER TABLE `event`
+  MODIFY `event_id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+
+--
+-- AUTO_INCREMENT for table `organisation`
+--
+ALTER TABLE `organisation`
+  MODIFY `organisation_id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+
+--
+-- AUTO_INCREMENT for table `user`
+--
+ALTER TABLE `user`
+  MODIFY `user_id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
+
+--
+-- AUTO_INCREMENT for table `volunteer`
+--
+ALTER TABLE `volunteer`
+  MODIFY `volunteer_id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+
+--
+-- Constraints for dumped tables
+--
+
+--
+-- Constraints for table `event`
+--
+ALTER TABLE `event`
+  ADD CONSTRAINT `event_ibfk_1` FOREIGN KEY (`organisation_id`) REFERENCES `organisation` (`organisation_id`) ON DELETE CASCADE ON UPDATE RESTRICT;
+
+--
+-- Constraints for table `user`
+--
+ALTER TABLE `user`
+  ADD CONSTRAINT `user_ibfk_1` FOREIGN KEY (`volunteer_id`) REFERENCES `volunteer` (`volunteer_id`) ON DELETE CASCADE ON UPDATE RESTRICT;
+
+--
+-- Constraints for table `volunteer_event`
+--
+ALTER TABLE `volunteer_event`
+  ADD CONSTRAINT `volunteer_event_ibfk_1` FOREIGN KEY (`event_id`) REFERENCES `event` (`event_id`) ON DELETE CASCADE,
+  ADD CONSTRAINT `volunteer_event_ibfk_2` FOREIGN KEY (`volunteer_id`) REFERENCES `volunteer` (`volunteer_id`) ON DELETE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

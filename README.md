@@ -14,13 +14,12 @@ https://git.infotech.monash.edu/fit2104/fit2104-2025-s2/group-assessment-repo/La
 Username: Amy
 Password: 123
 ## File Names
-Schema: schema.sql
-Data: data.sql
+Schema and data: schema_data.sql
 ## Work Breakdown Agreement
 ### Jagannath
 - [x] Initial GitLab folder setup
 - [x] Database Schema
-- [x] Sample database data
+- [x] Sample Database Data
 #### User Pages
 - [x] Registration Form
 - [x] List of Users
@@ -29,7 +28,7 @@ Data: data.sql
 - [x] Admin can delete users except themselves
 - [x] All inputs validated at front-end
 - [x] All errors properly captured and handled
-- [ ] Using prepared statements throughout
+- [x] Using prepared statements throughout
 #### Contact Us Page
 - [x] The contact us page and its form its properly implemented, and is publicly accessible
 - [x] The contact us form content is being sent to the specified email address using mail() in PHP
@@ -38,7 +37,7 @@ Data: data.sql
 - [x] The user can delete a contact form
 - [x] All inputs validated at front-end
 - [x] Errors are properly captured and handled
-- [ ] Using prepared statements throughout
+- [x] Using prepared statements throughout
 #### Events Page
 - [x] Event listing page: When no record is found in the database, an appropriate message is displayed
 - [x] Event inspection/view page
@@ -48,7 +47,7 @@ Data: data.sql
 - [x] All inputs validated at front-end
 - [x] Any relationships with other tables are properly handled
 - [x] Errors are properly captured and handled
-- [ ] Using prepared statements throughout
+- [x] Using prepared statements throughout
 ### Hakeem
 - [x] Creation of OOP classes
 #### Volunteer Pages

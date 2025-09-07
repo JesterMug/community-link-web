@@ -91,8 +91,8 @@ if (isset($_POST['delete'])) {
                 <button type="submit" name="delete" class="btn btn-danger"
                         onclick="return confirm('Are you sure you want to delete this message?')">Delete
                 </button>
-                <a href="view.php" class="btn btn-secondary">Cancel</a>
               <?php endif; ?>
+              <a href="view.php" class="btn btn-secondary">Cancel</a>
             </form>
           <?php endif; ?>
         </div>
