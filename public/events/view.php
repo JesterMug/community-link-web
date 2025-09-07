@@ -3,7 +3,7 @@ require_once __DIR__ . '/../../db_connection.php';
 require_once __DIR__ . '/../../classes/Event.php';
 require_once __DIR__ . '/../../classes/Auth.php';
 
-Auth::requireAuth();
+Auth::requireAdmin();
 
 $errors = [];
 $success = null;
