@@ -5,7 +5,7 @@ require_once __DIR__ . '/../../classes/Volunteer.php';
 require_once __DIR__ . '/../../classes/VolunteerEvent.php';
 require_once __DIR__ . '/../../classes/Auth.php';
 
-Auth::requireAuth();
+Auth::requireAdmin();
 
 $errors = [];
 
@@ -45,7 +45,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 }
 
 $orgs = Organisation::all();
-$volunteers = Volunteer::all();
+$volunteers = Volunteer::availableForEvent();
 ?>
 
 

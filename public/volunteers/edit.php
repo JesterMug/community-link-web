@@ -4,7 +4,6 @@ require_once __DIR__ . '/../../classes/Auth.php';
 
 Auth::requireAuth();
 
-
 $errors = [];
 $success = null;
 $volunteer = null;
@@ -176,6 +175,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && $volunteer) {
                             </div>
 
 
+                          <?php if (Auth::isAdmin()): ?>
                             <div class="mb-3">
                                 <label for="status" class="form-label">Status</label>
                                 <select class="form-select" id="status" name="status" required>
@@ -183,6 +183,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && $volunteer) {
                                     <option value="inactive" <?= $volunteer->status === VolunteerStatus::Inactive ? 'selected' : '' ?>>Inactive</option>
                                 </select>
                             </div>
+                          <?php endif; ?>
 
                             <div class="d-flex gap-2">
                                 <button type="submit" class="btn btn-primary">Update Volunteer</button>

@@ -2,7 +2,7 @@
 require_once __DIR__ . '/../../classes/Event.php';
 require_once __DIR__ . '/../../classes/Auth.php';
 
-Auth::requireAuth();
+Auth::requireAdmin();
 
 $id = (int)($_GET['id'] ?? 0);
 $event = Event::find($id);

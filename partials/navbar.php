@@ -48,9 +48,6 @@ if (isset($_GET['logout'])) {
                     <?php elseif (Auth::isVolunteer()): ?>
                         <!-- Volunteer-only links -->
                         <li class="nav-item">
-                          <a class="nav-link" href="/Lab03_Group05/public/events/view.php">Events</a>
-                        </li>
-                        <li class="nav-item">
                             <a class="nav-link" href="/Lab03_Group05/public/volunteers/edit.php?id=<?php echo $_SESSION['volunteer_id']?>">My Profile</a>
                         </li>
                     <?php endif; ?>
@@ -66,6 +63,12 @@ if (isset($_GET['logout'])) {
                     <!-- Non-authenticated users (public) -->
                     <li class="nav-item">
                         <a class="nav-link" href="/Lab03_Group05/">Home</a>
+                    </li>
+                    <li class="nav-item">
+                      <a class="nav-link" href="/Lab03_Group05/public/volunteers/add.php">Register as a Volunteer</a>
+                    </li>
+                    <li class="nav-item">
+                      <a class="nav-link" href="/Lab03_Group05/public/organisations/add.php">Register as an Organisation</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="/Lab03_Group05/public/contact/add.php">Contact Us</a>
