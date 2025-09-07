@@ -39,14 +39,14 @@ Data: data.sql
 - [x] Errors are properly captured and handled
 - [ ] Using prepared statements throughout
 #### Events Page
-- [ ] Event listing page: When no record is found in the database, an appropriate message is displayed
-- [ ] Event inspection/view page
-- [ ] Add Event
-- [ ] Event page Modification
-- [ ] The admin can delete an event
-- [ ] All inputs validated at front-end
-- [ ] Any relationships with other tables are properly handled
-- [ ] Errors are properly captured and handled
+- [x] Event listing page: When no record is found in the database, an appropriate message is displayed
+- [x] Event inspection/view page
+- [x] Add Event
+- [x] Event page Modification
+- [x] The admin can delete an event
+- [x] All inputs validated at front-end
+- [x] Any relationships with other tables are properly handled
+- [x] Errors are properly captured and handled
 - [ ] Using prepared statements throughout
 ### Hakeem
 - [x] Creation of OOP classes

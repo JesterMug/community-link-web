@@ -4,6 +4,8 @@ if (session_status() == PHP_SESSION_NONE) {
     session_start();
 }
 
+$homeUrl = dirname($_SERVER['PHP_SELF']);
+
 require_once __DIR__ . '/../classes/Auth.php';
 
 if (isset($_GET['logout'])) {
@@ -46,7 +48,7 @@ if (isset($_GET['logout'])) {
                     <?php elseif (Auth::isVolunteer()): ?>
                         <!-- Volunteer-only links -->
                         <li class="nav-item">
-                            <a class="nav-link" href="/Lab03_Group05/public/events/view.php">View Events</a>
+                          <a class="nav-link" href="<?php echo $homeUrl; ?>/events/view.php">Events</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="/Lab03_Group05/public/volunteers/profile.php">My Profile</a>

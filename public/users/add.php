@@ -41,7 +41,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <div class="col">
       <div class="card shadow-sm">
         <div class="card-header">
-          <h1 class="h5 mb-0">Add New User</h1>
+          <h1 class="h4 mb-0">Add New User</h1>
         </div>
         <div class="card-body">
 

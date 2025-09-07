@@ -74,7 +74,9 @@ if (isset($_GET['delete'])) {
         </thead>
         <tbody>
         <?php if (!$users): ?>
-          <tr><td colspan="3">No users found.</td></tr>
+          <tr>
+            <td colspan="3">No users found.</td>
+          </tr>
         <?php else: ?>
           <?php foreach ($users as $u): ?>
             <tr>
