@@ -48,10 +48,10 @@ if (isset($_GET['logout'])) {
                     <?php elseif (Auth::isVolunteer()): ?>
                         <!-- Volunteer-only links -->
                         <li class="nav-item">
-                          <a class="nav-link" href="<?php echo $homeUrl; ?>/events/view.php">Events</a>
+                          <a class="nav-link" href="/Lab03_Group05/public/events/view.php">Events</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="/Lab03_Group05/public/volunteers/profile.php">My Profile</a>
+                            <a class="nav-link" href="/Lab03_Group05/public/volunteers/edit.php?id=<?php echo $_SESSION['volunteer_id']?>">My Profile</a>
                         </li>
                     <?php endif; ?>
 

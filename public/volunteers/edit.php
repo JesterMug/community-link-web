@@ -9,8 +9,16 @@ $errors = [];
 $success = null;
 $volunteer = null;
 
+
 // Get volunteer ID from URL
 $volunteerId = isset($_GET['id']) ? (int)$_GET['id'] : 0;
+
+// Check if user is volunteer and trying to edit someone else's profile
+if (Auth::isVolunteer() && $_SESSION['volunteer_id'] != $volunteerId) {
+    header('Location: /Lab03_Group05/public/index.php?error=access_denied');
+    exit;
+}
+
 if ($volunteerId) {
     $volunteer = Volunteer::find($volunteerId);
     if (!$volunteer) {
@@ -19,6 +27,7 @@ if ($volunteerId) {
 } else {
     $errors[] = "Invalid volunteer ID.";
 }
+
 
 // Handle form submission
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && $volunteer) {
