@@ -76,7 +76,7 @@ $volunteers = Volunteer::all();
                 </thead>
                 <tbody>
                 <?php if (!$volunteers): ?>
-                    <tr><td colspan="6">No volunteers found.</td></tr>
+                    <tr><td colspan="8">No volunteers found.</td></tr>
                 <?php else: ?>
                     <?php foreach ($volunteers as $v): ?>
                         <tr>

@@ -40,13 +40,13 @@ Data: data.sql
 - [ ] Using prepared statements throughout
 #### Events Page
 - [x] Event listing page: When no record is found in the database, an appropriate message is displayed
-- [ ] Event inspection/view page
+- [x] Event inspection/view page
 - [x] Add Event
-- [ ] Event page Modification
+- [x] Event page Modification
 - [x] The admin can delete an event
-- [ ] All inputs validated at front-end
+- [x] All inputs validated at front-end
 - [x] Any relationships with other tables are properly handled
-- [ ] Errors are properly captured and handled
+- [x] Errors are properly captured and handled
 - [ ] Using prepared statements throughout
 ### Hakeem
 - [x] Creation of OOP classes
